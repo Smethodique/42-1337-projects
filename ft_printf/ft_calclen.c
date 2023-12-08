@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunsdec.c                                     :+:      :+:    :+:   */
+/*   ft_calclen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 20:27:55 by stakhtou          #+#    #+#             */
-/*   Updated: 2023/12/05 17:36:03 by stakhtou         ###   ########.fr       */
+/*   Created: 2023/11/14 15:27:24 by stakhtou          #+#    #+#             */
+/*   Updated: 2023/12/08 03:02:41 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putundec(int num)
+int	ft_calclen(int n)
 {
 	int	len;
 
-	if (num == -2147483648)
+	len = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
 	{
-		write(1, "-2147483648", 11);
-		len = 11;
+		len++;
+		n = -n;
 	}
-	else if (num >= 0 && num <= 9)
+	while (n != 0)
 	{
-		ft_putchar(48 + num, &len);
+		n = n / 10;
+		len++;
 	}
-	else if (num > 9)
-	{
-		ft_putundec(num / 10);
-		ft_putundec(num % 10);
-	}
-	len = ft_calclen(num);
 	return (len);
 }

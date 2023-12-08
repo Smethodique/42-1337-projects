@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 20:09:19 by stakhtou          #+#    #+#             */
-/*   Updated: 2023/12/03 18:28:39 by stakhtou         ###   ########.fr       */
+/*   Created: 2023/11/29 10:02:46 by stakhtou          #+#    #+#             */
+/*   Updated: 2023/12/08 08:43:24 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-void	ft_putuphex(int c, int len)
-{
-	int		j;
-	char	buffer[2000];
-	int		i;
+# include <stdarg.h>
+# include <stdio.h>
+# include <unistd.h>
 
-	if (c == 0)
-	{
-		ft_putchar('0', 1);
-		return ;
-	}
-	i = 0;
-	while (c > 0)
-	{
-		j = c % 16;
-		c = c / 16;
-		if (j < 10)
-			buffer[i++] = '0' + j;
-		else if (j >= 10)
-			buffer[i++] = 'a' + (j - 10);
-	}
-	while (i > 0)
-	{
-		len++;
-		write(1, &buffer[--i], 1);
-	}
-}
+int	ft_putchar(char c, int *len);
+int	ft_putstr(char *str);
+int	ft_putuphex(size_t c);
+int	ft_puthex(size_t c);
+int	ft_putdec(long num);
+int	ft_putundec(unsigned int num);
+int	ft_calclen(int n);
+int	ft_printf(const char *printer, ...);
+int	ft_putadress(void *add);
+#endif

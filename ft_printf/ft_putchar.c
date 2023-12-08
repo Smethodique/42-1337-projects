@@ -1,39 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calclen.c                                       :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 15:27:24 by stakhtou          #+#    #+#             */
-/*   Updated: 2023/12/04 00:46:37 by stakhtou         ###   ########.fr       */
+/*   Created: 2023/11/29 09:54:21 by stakhtou          #+#    #+#             */
+/*   Updated: 2023/12/06 10:30:24 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	calclen(int n)
+int	ft_putchar(char c, int *len)
 {
-	int	len;
-
-	len = 0;
-	if (n <= 0)
-	{
-		len++;
-		n = -n;
-		while (n != 0)
-		{
-			n = n / 10;
-			len++;
-		}
-	}
-	else if (n > 0)
-	{
-		while (n != 0)
-		{
-			n = n / 10;
-			len++;
-		}
-	}
-	return (len);
+	write(1, &c, 1);
+	(*len)++;
+	return (0);
 }

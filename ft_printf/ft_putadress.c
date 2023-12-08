@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putadress.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 10:06:15 by stakhtou          #+#    #+#             */
-/*   Updated: 2023/11/30 14:56:46 by stakhtou         ###   ########.fr       */
+/*   Created: 2023/11/29 09:54:21 by stakhtou          #+#    #+#             */
+/*   Updated: 2023/12/07 11:52:50 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
 
-int	ft_putstr(char *str)
+int	ft_putadress(void *add)
 {
-	int	i;
+	int	len;
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	return (i);
+	ft_putstr("0x");
+	len = 2 + ft_puthex((size_t)add);
+	return (len);
 }

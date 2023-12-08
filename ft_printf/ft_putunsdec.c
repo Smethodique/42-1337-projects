@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putuphex.c                                      :+:      :+:    :+:   */
+/*   ft_putunsdec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 20:09:19 by stakhtou          #+#    #+#             */
-/*   Updated: 2023/12/05 16:28:17 by stakhtou         ###   ########.fr       */
+/*   Created: 2023/11/30 20:27:55 by stakhtou          #+#    #+#             */
+/*   Updated: 2023/12/08 08:43:06 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putuphex(int c)
+int	ft_putundec(unsigned int num)
 {
-	int		j;
-	char	buffer[2000];
-	int		i;
-	int		len;
+	int	len;
 
 	len = 0;
-	if (c == 0)
-		ft_putchar('0', 1);
-	i = 0;
-	while (c > 0)
+	if (num == 0)
 	{
-		j = c % 16;
-		c = c / 16;
-		if (j < 10)
-			buffer[i++] = '0' + j;
-		else if (j >= 10)
-			buffer[i++] = 'A' + (j - 10);
+		ft_putchar('0', &len);
+		return (len);
 	}
-	while (i > 0)
+	else if (num == 4294967295)
+		return (ft_putstr("4294967295"));
+	else
 	{
-		len++;
-		write(1, &buffer[--i], 1);
+		if (num <= 9)
+		{
+			ft_putchar('0' + num, &len);
+			return (len);
+		}
+		else
+		{
+			len += ft_putundec(num / 10);
+			len += ft_putundec(num % 10);
+			return (len);
+		}
 	}
-	return (len);
 }
