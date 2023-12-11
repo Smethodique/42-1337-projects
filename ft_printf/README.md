@@ -14,7 +14,7 @@ To use `ft_printf`, include the "ft_printf.h" header file in your project. The f
 
 ```c
 int ft_printf(const char *format, ...);
-
+```
 # Format Specifiers
 
 ft_printf supports the following format specifiers:
@@ -28,6 +28,7 @@ ft_printf supports the following format specifiers:
 %p: Pointer
 %%: Percent Sign
 
+```
 
 # Example
 
@@ -38,5 +39,6 @@ int main() {
     return 0;
 }
 
+```
 # Contributing
 Contributions are welcome! If you have improvements or bug fixes, please open an issue or submit a pull request. 
