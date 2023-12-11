@@ -17,23 +17,17 @@ int ft_printf(const char *format, ...);
 ```
 # Format Specifiers
 
-ft_printf supports the following format specifiers:
+`ft_printf` supports the following format specifiers:
 
-%c: Character
+- `%c`: Character
+- `%s`: String
+- `%d` or `%i`: Integer
+- `%u`: Unsigned Integer
+- `%x`: Lowercase Hexadecimal
+- `%X`: Uppercase Hexadecimal
+- `%p`: Pointer
+- `%%`: Percent Sign
 
-%s: String
-
-%d or %i: Integer
-
-%u: Unsigned Integer
-
-%x: Lowercase Hexadecimal
-
-%X: Uppercase Hexadecimal
-
-%p: Pointer
-
-%%: Percent Sign
 
 # Example
 ```c
