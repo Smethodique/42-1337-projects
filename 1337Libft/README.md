@@ -1,7 +1,5 @@
-# libft
-libft 100/100
-
-# Libft
+# libft 42
+libft 100/101 
 
 ## Description
 Libft is a 42 project that involves creating your own C library,
@@ -15,7 +13,6 @@ as well as additional functions that may be useful.
 - [Usage](#usage)
 - [Documentation](#documentation)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Getting Started
 
@@ -26,48 +23,12 @@ Before you begin, make sure you have the following installed:
 
 ### Installation
 1. Clone the repository to your local machine:
-git clone https://github.com/Asami2004/42-1337-projects.git libft``git clone https://github.com/Asami2004/42-1337-projects.git libft sh
+ 
+git clone https://github.com/Asami2004/42-1337-projects.git
 
 cd libft
 
 make
-
-
-Absolutely! Here's a simple README template for your libft project:
-
-markdown
-Copy code
-# Libft
-
-## Description
-Libft is a 42 project that involves creating your own C library, containing re-implementations of standard functions, as well as additional functions that may be useful.
-
-## Table of Contents
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Documentation](#documentation)
-- [Contributing](#contributing)
-
-## Getting Started
-
-### Prerequisites
-Before you begin, make sure you have the following installed:
-- GCC compiler
-- Make
-
-### Installation
-1. Clone the repository to your local machine:
-
- git clone https://github.com/your-username/libft.git
-Navigate to the project directory:
-
- cd libft
-Compile the library using the provided Makefile:
-
-make
-
 
 Your libft library is now ready to be used in your projects.
 
