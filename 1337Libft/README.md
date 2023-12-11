@@ -50,7 +50,6 @@ Libft is a 42 project that involves creating your own C library, containing re-i
 - [Usage](#usage)
 - [Documentation](#documentation)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Getting Started
 
@@ -62,13 +61,13 @@ Before you begin, make sure you have the following installed:
 ### Installation
 1. Clone the repository to your local machine:
 2. 
-<font size="5" color="#008000"> git clone https://github.com/your-username/libft.git
+ git clone https://github.com/your-username/libft.git
 Navigate to the project directory:
 
-<font size="5" color="#008000"> cd libft
+ cd libft
 Compile the library using the provided Makefile:
 
-<font size="5" color="#008000">make
+make
 
 Your libft library is now ready to be used in your projects.
 
@@ -77,7 +76,7 @@ To use the library in your project, include the libft.h header file and link aga
 
 Example compilation:
 
-<font size="5" color="#008000"> gcc -o my_program my_program.c -L. -lft
+ gcc -o my_program my_program.c -L. -lft
 
 # Documentation
 
