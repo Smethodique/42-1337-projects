@@ -18,7 +18,7 @@ int ft_printf(const char *format, ...);
 # Format Specifiers
 
 ft_printf supports the following format specifiers:
-
+```c
 %c: Character
 %s: String
 %d or %i: Integer
