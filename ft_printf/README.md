@@ -18,7 +18,6 @@ int ft_printf(const char *format, ...);
 # Format Specifiers
 
 ft_printf supports the following format specifiers:
-```c
 %c: Character
 %s: String
 %d or %i: Integer
@@ -29,7 +28,6 @@ ft_printf supports the following format specifiers:
 %%: Percent Sign
 
 ```
-
 # Example
 ```
 #include "ft_printf.h"
@@ -39,6 +37,6 @@ int main() {
     return 0;
 }
 
-```
+
 # Contributing
 Contributions are welcome! If you have improvements or bug fixes, please open an issue or submit a pull request. 
