@@ -69,6 +69,7 @@ Compile the library using the provided Makefile:
 
 make
 
+
 Your libft library is now ready to be used in your projects.
 
 # Usage
