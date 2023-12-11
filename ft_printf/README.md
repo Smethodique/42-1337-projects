@@ -31,7 +31,7 @@ ft_printf supports the following format specifiers:
 ```
 
 # Example
-
+```
 #include "ft_printf.h"
 
 int main() {
