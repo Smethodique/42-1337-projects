@@ -26,7 +26,7 @@ Before you begin, make sure you have the following installed:
 
 ### Installation
 1. Clone the repository to your local machine:
-git clone https://github.com/Asami2004/42-1337-projects.git libft```sh
+git clone https://github.com/Asami2004/42-1337-projects.git libft``git clone https://github.com/Asami2004/42-1337-projects.git libft sh
 
 cd libft
 
