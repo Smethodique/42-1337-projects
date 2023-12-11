@@ -23,22 +23,24 @@ Before you begin, make sure you have the following installed:
 
 ### Installation
 1. Clone the repository to your local machine:
- 
+ ```c
 git clone https://github.com/Asami2004/42-1337-projects.git
-
+```
+ ```c
 cd libft
-
+```
+ ```c
 make
-
+```
 Your libft library is now ready to be used in your projects.
 
 # Usage
 To use the library in your project, include the libft.h header file and link against the compiled library.
 
 Example compilation:
-
+ ```c
  gcc -o my_program my_program.c -L. -lft
-
+```
 # Documentation
 
 For details on the functions provided by this library, refer to the libft.h header file.
