@@ -28,3 +28,12 @@ ft_printf supports the following format specifiers:
 %p: Pointer
 %%: Percent Sign
 
+
+# Example
+
+#include "ft_printf.h"
+
+int main() {
+    ft_printf("Formatting examples: %d, %s, %c\n", 42, "Hello", 'A');
+    return 0;
+}
