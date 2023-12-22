@@ -5,4 +5,4 @@ This repository contains various projects completed as part of the 42 curriculum
 ## Table of Contents
 - [Project 1: libft](./1337Libft)
 - [Project 2: ft_printf](./ft_printf)
-- 🔜 get_next_line (soon ...)
+- [Project 3: get_next_line](./GNL)
