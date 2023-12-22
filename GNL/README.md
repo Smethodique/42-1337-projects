@@ -32,7 +32,7 @@ Compile your program with the source file get_next_line_bonus.c and include the 
 ```bash
 gcc -Wall -Wextra -Werror *.c
 ```
-Function Descriptions
+## Function Descriptions
 char *get_next_line(int fd): Reads a line from the given file descriptor.
 
 char *ft_strjoin(char *line, char *buff): Joins two strings.
