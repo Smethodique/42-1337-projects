@@ -96,10 +96,10 @@ char	*khli_gha_lmouhim(char *line)
 
 char	*get_next_line(int fd)
 {
-	static char	*line[1024];
+	static char	*line[OPEN_MAX];
 	char		*next;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > OPEN_MAX || BUFFER_SIZE > 2147483647)
 		return (NULL);
 	line[fd] = readex_line(fd, line[fd]);
 	if (!line[fd])
