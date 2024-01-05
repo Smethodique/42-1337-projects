@@ -1,5 +1,5 @@
 # libft 42
-libft 100/101 
+libft 100/100
 
 ## Description
 Libft is a 42 project that involves creating your own C library,
