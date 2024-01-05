@@ -99,7 +99,7 @@ char	*get_next_line(int fd)
 	static char	*line;
 	char		*next;
 
-	if (BUFFER_SIZE <= 0 || fd < 0 || BUFFER_SIZE >= 2147483647)
+	if (BUFFER_SIZE <= 0 || fd < 0 || BUFFER_SIZE > 2147483647)
 		return (NULL);
 	line = readex_line(fd, line);
 	next = zyada_mn_rass_l7me9(line);
