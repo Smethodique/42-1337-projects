@@ -6,4 +6,4 @@ This repository contains various projects completed as part of the 42 curriculum
 - [Project 1: libft](./1337Libft)
 - [Project 2: ft_printf](./ft_printf)
 - [Project 3: get_next_line](./GNL)
-- [Project 4: born to be root](./
+- [Project 4: born to be root](./Born2BeRoot)
