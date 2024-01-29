@@ -87,11 +87,17 @@ Defaults	log_input,log_output# Add the following line
 
 
 # Create monitoring script
+```bash
 nano monitoring.sh
-# (Add the script : Born2BeRoot/monitoring.sh)
-[path ](/Born2BeRoot/monitoring.sh)
-# Make script executable
+```
+ (Add the script in monitoring.sh)
+[ script path ](/Born2BeRoot/monitoring.sh)
+Make script executable
+```bash
 chmod +x monitoring.sh
+```
 
-# Schedule script to run every 10 minutes using cron
+Schedule script to run every 10 minutes using cron
+```bash
 */10 * * * * /path/to/monitoring.sh
+```
