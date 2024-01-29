@@ -89,7 +89,7 @@ Defaults	log_input,log_output# Add the following line
 # Create monitoring script
 nano monitoring.sh
 # (Add the script : Born2BeRoot/monitoring.sh)
-
+[path ](/Born2BeRoot/monitoring.sh)
 # Make script executable
 chmod +x monitoring.sh
 
