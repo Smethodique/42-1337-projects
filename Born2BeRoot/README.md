@@ -93,7 +93,9 @@ nano monitoring.sh
  (Add the script in monitoring.sh)
  
 [ script path ](/Born2BeRoot/monitoring.sh)
+
 Make script executable
+
 ```bash
 chmod +x monitoring.sh
 ```
