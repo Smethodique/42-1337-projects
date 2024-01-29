@@ -106,9 +106,9 @@ Schedule script to run every 10 minutes using cron
 ```
 ### Bonus Part
 
-# Setting Up WordPress on Lighttpd with MariaDB and PHP
+Setting Up WordPress on Lighttpd with MariaDB and PHP
 
-## Step 1 – Install Lighttpd, MariaDB, and PHP
+Step 1 – Install Lighttpd, MariaDB, and PHP
 ```bash
 apt-get install mysql-server lighttpd php php-fpm php-mysql php-cli php-curl php-xml php-json php-zip php-mbstring php-gd php-intl php-cgi -y
 apt-get remove apache2 -y
@@ -116,17 +116,17 @@ systemctl stop apache2
 systemctl start lighttpd
 systemctl enable lighttpd
 ```
-### Step 2 – Configure PHP-FPM to Work with Lighttpd
+Step 2 – Configure PHP-FPM to Work with Lighttpd
 ```bash
 
 nano /etc/php/8.2/fpm/pool.d/www.conf
 ```
-# Replace: listen = /run/php/php7.4-fpm.sock
-# With: listen = 127.0.0.1:9000
+ Replace: listen = /run/php/php7.4-fpm.sock
+ With: listen = 127.0.0.1:9000
 
 nano /etc/lighttpd/conf-available/15-fastcgi-php.conf
-# Replace: "bin-path" => "/usr/bin/php-cgi", "socket" => "/var/run/lighttpd/php.socket",
-# With: "host" => "127.0.0.1", "port" => "9000"
+ Replace: "bin-path" => "/usr/bin/php-cgi", "socket" => "/var/run/lighttpd/php.socket",
+ With: "host" => "127.0.0.1", "port" => "9000"
 
 lighty-enable-mod fastcgi
 lighty-enable-mod fastcgi-php
@@ -134,18 +134,18 @@ lighty-enable-mod fastcgi-php
 systemctl restart lighttpd
 systemctl restart php8.2fpm
 
-### Step 3 – Create a Database for WordPress
+# Step 3 – Create a Database for WordPress
 ```bash
 mysql
 ```
-# Run the following commands in MySQL shell:
+ Run the following commands in MySQL shell:
 ```BASH
 CREATE DATABASE wpdb;
 GRANT ALL PRIVILEGES on wpdb.* TO 'wpuser'@'localhost' IDENTIFIED BY 'password';
 FLUSH PRIVILEGES;
 EXIT;
 ```
-### Step 4 – Install WordPress
+# Step 4 – Install WordPress
 ```bash
 cd /var/www/html
 wget https://wordpress.org/latest.tar.gz
@@ -155,23 +155,23 @@ cd wordpress
 mv wp-config-sample.php wp-config.php
 nano wp-config.php
 ```
-# Configure database settings
+ ##Configure database settings
 ```bash
 chown -R www-data:www-data /var/www/html/wordpress
 chmod -R 755 /var/www/html/wordpress
 ```
-# Step 5: Configure Lighttpd for WordPress
+## Step 5: Configure Lighttpd for WordPress
 
-# 1. Create a directory for virtual host configuration files:
+ 1. Create a directory for virtual host configuration files:
 ```bash
 
 mkdir -p /etc/lighttpd/vhosts.d/
 ```
-# 2. Edit the Lighttpd configuration file:
+ 2. Edit the Lighttpd configuration file:
 ```bash
 nano /etc/lighttpd/lighttpd.conf
 ```
-# 3. Add mod_rewrite to the list of server modules:
+ 3. Add mod_rewrite to the list of server modules:
 ```bash
 server.modules = (
         "mod_access",
@@ -182,7 +182,7 @@ server.modules = (
 )
 ```
 
-# 4. Define the path for virtual host configurations:
+4. Define the path for virtual host configurations:
 ```bash
 include_shell "cat /etc/lighttpd/vhosts.d/*.conf"
 ```
