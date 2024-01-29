@@ -28,5 +28,5 @@ sudo apt install apparmor
 
 # Configure LVM and create encrypted partitions
 # (Refer to project documentation for specific partitioning details)
-
+```
 4. SSH Configuration
