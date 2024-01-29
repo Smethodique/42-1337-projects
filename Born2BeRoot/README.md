@@ -84,7 +84,7 @@ Defaults	log_input,log_output# Add the following line
 %sudo   ALL=(ALL:ALL) ALL
 ```
 ### 8. Monitoring Script
-```bash
+
 
 # Create monitoring script
 nano monitoring.sh
@@ -95,4 +95,3 @@ chmod +x monitoring.sh
 
 # Schedule script to run every 10 minutes using cron
 */10 * * * * /path/to/monitoring.sh
-```
