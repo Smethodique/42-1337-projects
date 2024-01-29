@@ -201,3 +201,9 @@ systemctl restart lighttpd
 ```
 ### Step 6 – Access WordPress Dashboard
 Open your browser and navigate to your WordPress site (e.g., http://localhodt) to complete the installation.
+
+## BONUS PART 2 (Services)
+
+This section is intended to be adaptable, enabling students to select any service to integrate into their operating system
+such as FTP or backup service .... 
+Nevertheless, it is crucial to emphasize that the utilization of Apache and Nginx is strictly forbiden in this particular context.
