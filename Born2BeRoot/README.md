@@ -160,19 +160,36 @@ nano wp-config.php
 chown -R www-data:www-data /var/www/html/wordpress
 chmod -R 755 /var/www/html/wordpress
 ```
-# Step 5 – Configure Lighttpd for WordPress
-```bash
-mkdir -p /etc/lighttpd/vhosts.d/
-nano /etc/lighttpd/lighttpd.conf
-```
-# Add: include_shell
-```bash
-"cat /etc/lighttpd/vhosts.d/*.conf"
-```
-nano /etc/lighttpd/vhosts.d/wordpress.conf
-# Add:
+# Step 5: Configure Lighttpd for WordPress
+
+# 1. Create a directory for virtual host configuration files:
 ```bash
 
+mkdir -p /etc/lighttpd/vhosts.d/
+```
+# 2. Edit the Lighttpd configuration file:
+```bash
+nano /etc/lighttpd/lighttpd.conf
+```
+# 3. Add mod_rewrite to the list of server modules:
+```bash
+server.modules = (
+        "mod_access",
+        "mod_alias",
+        "mod_compress",
+        "mod_redirect",
+        "mod_rewrite",
+)
+```
+
+# 4. Define the path for virtual host configurations:
+```bash
+include_shell "cat /etc/lighttpd/vhosts.d/*.conf"
+```
+Save and close the file.
+
+ 5. Create a new virtual host configuration file for WordPress:
+```bash
 $HTTP["host"] =~ "localhost" {
     server.document-root = "/var/www/html/wordpress"
     server.errorlog = "/var/log/lighttpd/wordpress-error.log"
