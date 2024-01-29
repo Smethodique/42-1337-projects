@@ -91,6 +91,7 @@ Defaults	log_input,log_output# Add the following line
 nano monitoring.sh
 ```
  (Add the script in monitoring.sh)
+ 
 [ script path ](/Born2BeRoot/monitoring.sh)
 Make script executable
 ```bash
