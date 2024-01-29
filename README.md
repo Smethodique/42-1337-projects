@@ -7,3 +7,4 @@ This repository contains various projects completed as part of the 42 curriculum
 - [Project 2: ft_printf](./ft_printf)
 - [Project 3: get_next_line](./GNL)
 - [Project 4: born to be root](./Born2BeRoot)
+  MiniTalk (SOON)
