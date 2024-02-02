@@ -1,4 +1,4 @@
-  GNU nano 7.2                                                 /usr/local/bin/monitoring.sh                                                           
+                                                          
 #!/bin/bash
 broadcast_message=""
 
