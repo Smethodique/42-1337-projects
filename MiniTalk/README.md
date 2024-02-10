@@ -10,8 +10,7 @@ This project demonstrates inter-process communication (IPC) through signal handl
    - Navigate to the directory containing the source files.
    - Run the following command to compile both the server and client:
      ```
-     gcc server.c -o server
-     gcc client.c -o client
+     make
      ```
 
 2. **Run the Server:**
