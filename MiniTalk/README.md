@@ -8,9 +8,7 @@ This project demonstrates inter-process communication (IPC) through signal handl
 1. **Compile:**
    - Open a terminal window.
    - Navigate to the directory containing the source files.
-   - Run the following command to compile both the server and client:
-   - server Pid will be printed
-     ```
+   - Run the following command to compile both the server and client:     ```
      make
      ```
 
@@ -19,7 +17,7 @@ This project demonstrates inter-process communication (IPC) through signal handl
      ```
      ./server
      ```
-
+   - server Pid will be printed
 3. **Run the Client:**
    - Open another terminal window.
    - Execute the client binary with the server's process ID as an argument:
