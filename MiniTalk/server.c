@@ -46,7 +46,6 @@ void	siguser2(int sig2)
 
 int	main(void)
 {
-	g_lobal_data = (struct g_GlobalData){0, 0};
 	if (signal(SIGUSR1, siguser1) == SIG_ERR)
 	{
 		ft_printf("Unable to register SIGUSR1 handler");
