@@ -17,9 +17,8 @@
 
 struct g_GlobalData	g_lobal_data;
 
-void	siguser1(int sig1)
+void	siguser1(void)
 {
-	(void)sig1;
 	g_lobal_data.received_byte <<= 1;
 	g_lobal_data.received_bits++;
 	if (g_lobal_data.received_bits == 8)
@@ -30,9 +29,8 @@ void	siguser1(int sig1)
 	}
 }
 
-void	siguser2(int sig2)
+void	siguser2(void)
 {
-	(void)sig2;
 	g_lobal_data.received_byte <<= 1;
 	g_lobal_data.received_byte |= 1;
 	g_lobal_data.received_bits++;
