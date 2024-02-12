@@ -38,7 +38,7 @@ void	siguser2(int sig2)
 	g_lobal_data.received_bits++;
 	if (g_lobal_data.received_bits == 8)
 	{
-		printf("%c", g_lobal_data.received_byte);
+		ft_printf("%c", g_lobal_data.received_byte);
 		g_lobal_data.received_byte = 0;
 		g_lobal_data.received_bits = 0;
 	}
