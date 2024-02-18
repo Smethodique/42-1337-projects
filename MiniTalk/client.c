@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 01:13:39 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/02/10 18:40:14 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/02/18 20:25:13 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	send_bit(char c, int pid)
 	i = 7;
 	while (i >= 0)
 	{
-		if ((c >> i) & 1)
+		if (((c >> i) & 1) == 1)
 		{
 			kill(pid, SIGUSR2);
 		}
@@ -32,11 +32,21 @@ void	send_bit(char c, int pid)
 	}
 }
 
+void	sig_handler(int siga)
+{
+	if (siga == SIGUSR1 || siga == SIGUSR2)
+	{
+		ft_printf("Received\n");
+	}
+}
+
 int	main(int ac, char **av)
 {
 	int		pid;
 	char	*message;
 
+	signal(SIGUSR1, sig_handler);
+	signal(SIGUSR2, sig_handler);
 	if (ac == 3)
 	{
 		pid = ft_atoi(av[1]);
