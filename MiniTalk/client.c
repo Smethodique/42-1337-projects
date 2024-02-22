@@ -50,6 +50,10 @@ int	main(int ac, char **av)
 	if (ac == 3)
 	{
 		pid = ft_atoi(av[1]);
+		if(pid == -1)
+		{
+			exite(1);
+		}
 		message = av[2];
 		while (*message)
 		{
