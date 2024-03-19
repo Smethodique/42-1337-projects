@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 17:44:45 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/18 06:51:53 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/03/19 02:01:03 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SOLONG_H
 
 # include "1337Libft/libft.h"
-# include "mlx.h"
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>

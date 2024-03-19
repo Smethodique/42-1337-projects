@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 17:44:45 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/18 06:26:44 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/03/19 03:00:26 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ char	**convert2d(char *str, int *rows, int *cols)
 	(*rows)++;
 	array2d = malloc(*rows * sizeof(char *));
 	copy_lines(array2d, start, *rows, *cols);
+	free(str);
 	return (array2d);
 }
 
@@ -70,6 +71,7 @@ char	**convert_map(t_flood_fill *fill)
 	minc = file_to_str(fd);
 	close(fd);
 	convert = convert2d(minc, &(fill->rows), &(fill->cols));
+	
 	return (convert);
 }
 

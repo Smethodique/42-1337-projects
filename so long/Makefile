@@ -8,7 +8,7 @@ CFLAGS = -fsanitize=address -g3 -Wall -Wextra -Werror -g3
 all: $(NAME)
 
 $(NAME): $(OBJS)
-				$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+			$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

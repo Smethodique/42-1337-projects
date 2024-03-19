@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:46:32 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/19 01:30:27 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/03/19 03:03:56 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ char	*file_to_str(int fd)
 		len = strlen(line);
 		tmp = ptr;
 		ptr = malloc(total_len + len + 1);
+		if (!ptr)
+		{
+			free(tmp);
+			free(line);
+			return NULL;
+		}
 		if (tmp)
 		{
 			ft_memcpy(ptr, tmp, total_len);
@@ -36,6 +42,7 @@ char	*file_to_str(int fd)
 		ft_memcpy(ptr + total_len, line, len);
 		total_len += len;
 		ptr[total_len] = '\0';
+		free(line);
 		line = get_next_line(fd);
 	}
 	return (ptr);
@@ -87,6 +94,7 @@ int	rect_check(const char *filename)
 			first_len = length;
 		else if (length != first_len)
 			return (0);
+		free(line);
 		line = get_next_line(fd);
 		line_num++;
 	}
