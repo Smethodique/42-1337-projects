@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:46:32 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/20 07:37:06 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/03/23 23:40:17 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	validate_map(const char *map)
 	info.zero_pos = ft_strchr(map, '0');
 	info.one_pos = ft_strchr(map, '1');
 	info.exit_count = 0;
+	if (!ptr)
+		return (0);
 	while (*ptr != '\0')
 	{
 		if (*ptr == 'E' || *ptr == 'P')
@@ -62,8 +64,8 @@ int	validate_map(const char *map)
 			return (0);
 	}
 	if (info.exit_pos == NULL || info.collectible_pos == NULL
-		|| info.start_pos == NULL || info.zero_pos == NULL
-		|| info.one_pos == NULL || info.exit_count > 2)
+		|| info.start_pos == NULL || info.one_pos == NULL
+		|| info.exit_count > 2)
 		return (0);
 	return (1);
 }
@@ -90,6 +92,7 @@ int	rect_check(const char *filename)
 			first_len = length;
 		else if (length != first_len)
 			return (0);
+		free(line);
 		line = get_next_line(fd);
 		line_num++;
 	}
@@ -114,7 +117,7 @@ void	all_func(const char *filename)
 		return ;
 	}
 	else
-		ft_printf("all good\n");
+	       setup_and_run(filename);
 	i = 0;
 	while (i < fill.rows)
 	{
@@ -143,9 +146,9 @@ int	main(int ac, char **av)
 			return (0);
 		}
 		all_func(av[1]);
+		// system("leaks solong");
 		return (0);
 	}
 	else if (ac != 2)
 		return (0);
 }
-s

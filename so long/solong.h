@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 17:44:45 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/18 06:51:53 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/03/23 04:44:15 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,31 @@ typedef struct s_data
 	int			close;
 }				t_data;
 
+typedef struct s_draw_params
+{
+	void		*mlx;
+	void		**win;
+	void		*wall_img;
+	void		*coin_img;
+	void		*exit_img;
+	void		*black_img;
+	void		*ball_img;
+	int			tile_size;
+	int			window_width;
+	int			window_height;
+	int			draw_x;
+	int			draw_y;
+}				t_draw_params;
+typedef struct t_mini
+{
+	void		*img_player;
+	void		*door;
+	void		*wall;
+	void		*black;
+	void		*coins;
+	void		*init_ptr;
+	int			*coins_num;
+}				t_mini;
 char			*file_to_str(int fd);
 int				first_line(const char *filename);
 int				rect_check(const char *filename);
@@ -67,5 +92,12 @@ void			flood_fill(t_flood_fill fill);
 int				eat_check(t_flood_fill fill);
 void			find_player_coordinates(t_flood_fill *fill);
 int				check_go(t_flood_fill *fill);
+void			est_con(void **mlx);
+void			init_map(t_mini *d);
+void			draw_tile(t_flood_fill *fill, t_draw_params *params, int x,
+					int y);
+void			draw_tiles(t_flood_fill *fill, t_draw_params *params);
+void			draw_map(t_flood_fill *fill, t_draw_params *params);
+void	setup_and_run(const char *map_filename);
 
 #endif
