@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 17:44:45 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/23 04:44:15 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/03/24 10:13:56 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,16 @@ typedef struct s_data
 	int			our_r;
 	int			close;
 }				t_data;
-
+typedef struct t_mini
+{
+	void		*img_player;
+	void		*door;
+	void		*wall;
+	void		*black;
+	void		*coins;
+	void		*init_ptr;
+	int			*coins_num;
+}				t_mini;
 typedef struct s_draw_params
 {
 	void		*mlx;
@@ -67,17 +76,9 @@ typedef struct s_draw_params
 	int			window_height;
 	int			draw_x;
 	int			draw_y;
+	t_mini 		*d;
 }				t_draw_params;
-typedef struct t_mini
-{
-	void		*img_player;
-	void		*door;
-	void		*wall;
-	void		*black;
-	void		*coins;
-	void		*init_ptr;
-	int			*coins_num;
-}				t_mini;
+
 char			*file_to_str(int fd);
 int				first_line(const char *filename);
 int				rect_check(const char *filename);
@@ -98,6 +99,6 @@ void			draw_tile(t_flood_fill *fill, t_draw_params *params, int x,
 					int y);
 void			draw_tiles(t_flood_fill *fill, t_draw_params *params);
 void			draw_map(t_flood_fill *fill, t_draw_params *params);
-void	setup_and_run(const char *map_filename);
+void			setup_and_run(const char *filename, t_flood_fill *fill);
 
 #endif

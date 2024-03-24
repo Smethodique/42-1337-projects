@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 00:58:33 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/23 05:06:51 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/03/24 10:46:15 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,63 +39,66 @@ void	init_map(t_mini *d)
 			&width, &height);
 }
 
-void	draw_map(t_flood_fill *fill, t_draw_params *params)
-{
-	int	window_width;
-	int	window_height;
+// void	draw_map(t_flood_fill *fill, t_draw_params *params)
+// {
 
-	window_width = fill->cols * params->tile_size;
-	window_height = fill->rows * params->tile_size;
-	if (*(params->win))
-		mlx_destroy_window(params->mlx, *(params->win));
-	*(params->win) = mlx_new_window(params->mlx, window_width, window_height,
-			"Map Window");
-	if (!*(params->win))
-		return ;
-	draw_tiles(fill, params);
+
+// 	if (!*(params->win))
+// 		return ;
+// 	draw_tiles(fill, params);
+// }
+
+int	key_press(int keycode, t_flood_fill *fill, t_draw_params *params)
+{
+	int	draw_x;
+	int	draw_y;
+	
+	printf("ptr is %p fill->y %i fill->x%i\n", params->mlx, fill->y, fill->x);
+	if (keycode == 13 && fill->map[fill->y - 1][fill->x] != '1')
+		fill->y -= 1;
+	else if (keycode == 0)
+		fill->x -= 1;
+	else if (keycode == 1)
+		fill->y += 1;
+	else if (keycode == 2)
+		fill->x += 1;
+	draw_x = fill->x * 40;
+	draw_y = fill->y * 40;
+	mlx_put_image_to_window(params->mlx, params->win, params->ball_img,
+		draw_x, draw_y);
+	return (0);
 }
 
-void	setup_and_run(const char *map_filename)
+void	setup_and_run(const char *filename, t_flood_fill *fill)
 {
 	void			*mlx;
 	void			*win;
 	t_mini			d;
-	t_flood_fill	fill;
 	t_draw_params	params;
 
+
+	params.tile_size = 40;
+	params.window_width = fill->cols * params.tile_size;
+	params.window_height = fill->rows * params.tile_size;
+	printf("Rows: %d, Cols: %d\n",params.window_width, params.window_height);
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, 0, 0, "Map Window");
+	win = mlx_new_window(mlx, params.window_width,params.window_height, "Map Window");
+	if (!params.win)
+		mlx_destroy_window(params.mlx, params.win);
 	if (!mlx || !win)
 		exit(1);
 	d.init_ptr = mlx;
-	init_map(&d);
-	fill.arg = map_filename;
-	fill.map = convert_map(&fill);
+	init_map(params.d);
+	fill->arg = filename;
+	fill->map = convert_map(fill);
 	params.mlx = mlx;
-	params.win = &win;
-	params.wall_img = d.wall;
-	params.coin_img = d.coins;
-	params.exit_img = d.door;
-	params.black_img = d.black;
-	params.ball_img = d.img_player;
-	params.tile_size = 40;
-	draw_map(&fill, &params);
+	params.win = win;
+	printf("ptr is %p\n", params.mlx);
+
+	//mlx_put_image_to_window(params.mlx, params.win, params.d->wall, 10, 10);
+	//draw_map(fill, &params);
+	draw_tiles(fill, &params);
+
+	mlx_hook(win, 2, 1L << 0, key_press, &fill);
 	mlx_loop(mlx);
 }
-
-// int	main(int ac, char **av)
-// {
-// 	if (ac != 2)
-// 	{
-// 		printf("Usage: %s <map_filename>\n", av[0]);
-// 		return (1);
-// 	}
-// 		system("leaks solong");
-// 	setup_and_run(av[1]);
-	
-// 	while (1)
-// 	{
-// 	}
-	
-// 	return (0);
-// }

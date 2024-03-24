@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 02:24:45 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/23 02:28:02 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/03/24 10:39:50 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ void	draw_tile(t_flood_fill *fill, t_draw_params *params, int x, int y)
 	draw_x = x * params->tile_size;
 	draw_y = y * params->tile_size;
 	if (fill->map[y][x] == '1')
-		mlx_put_image_to_window(params->mlx, *(params->win), params->wall_img,
+		mlx_put_image_to_window(params->mlx, params->win, params->d->wall,
 			draw_x, draw_y);
 	else if (fill->map[y][x] == 'C')
-		mlx_put_image_to_window(params->mlx, *(params->win), params->coin_img,
+		mlx_put_image_to_window(params->mlx, params->win, params->d->coins,
 			draw_x, draw_y);
 	else if (fill->map[y][x] == 'E')
-		mlx_put_image_to_window(params->mlx, *(params->win), params->exit_img,
+		mlx_put_image_to_window(params->mlx, params->win, params->d->door,
 			draw_x, draw_y);
 	else if (fill->map[y][x] == '0')
-		mlx_put_image_to_window(params->mlx, *(params->win), params->black_img,
+		mlx_put_image_to_window(params->mlx, params->win, params->d->black,
 			draw_x, draw_y);
 	else if (fill->map[y][x] == 'P')
-		mlx_put_image_to_window(params->mlx, *(params->win), params->ball_img,
+		mlx_put_image_to_window(params->mlx, params->win, params->d->img_player,
 			draw_x, draw_y);
 }
 
@@ -51,6 +51,11 @@ void	draw_tiles(t_flood_fill *fill, t_draw_params *params)
 		{
 			draw_tile(fill, params, x, y);
 			x++;
+			if (fill->map[y][x] == 'P')
+			{
+				fill->x = x;
+				fill->y = y;
+			}
 		}
 		y++;
 	}

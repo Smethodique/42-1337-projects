@@ -3,7 +3,7 @@ SRCS = easy_path.c checkmaps.c 1337Libft/GNL/get_next_line.c 1337Libft/GNL/get_n
 OBJS = $(SRCS:.c=.o)
 LIBFT = 1337Libft/libft.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 LDFLAGS = -L 1337Libft -lft -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)

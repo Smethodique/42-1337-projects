@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:46:32 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/23 23:40:17 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/03/24 09:34:36 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,25 @@ char	*file_to_str(int fd)
 {
 	char	*line;
 	char	*ptr;
-	char	*tmp;
 	size_t	total_len;
 	size_t	len;
+	char	*tmp;
 
 	ptr = NULL;
 	total_len = 0;
 	line = get_next_line(fd);
-	while ((line) != NULL)
+	while (line != NULL)
 	{
 		len = strlen(line);
 		tmp = ptr;
 		ptr = malloc(total_len + len + 1);
 		if (tmp)
-		{
-			ft_memcpy(ptr, tmp, total_len);
-			free(tmp);
-		}
-		ft_memcpy(ptr + total_len, line, len);
+			memcpy(ptr, tmp, total_len);
+		free(tmp);
+		memcpy(ptr + total_len, line, len);
 		total_len += len;
 		ptr[total_len] = '\0';
+		free(line);
 		line = get_next_line(fd);
 	}
 	return (ptr);
@@ -96,7 +95,6 @@ int	rect_check(const char *filename)
 		line = get_next_line(fd);
 		line_num++;
 	}
-	close(fd);
 	return (1);
 }
 
@@ -106,6 +104,7 @@ void	all_func(const char *filename)
 	t_flood_fill	fill;
 	int				i;
 
+	i = 0;
 	fill.arg = filename;
 	data.our_r = rect_check(filename);
 	data.close = check_close(filename);
@@ -113,17 +112,18 @@ void	all_func(const char *filename)
 	if (data.our_r == 0 || data.close == 0 || check_go(&fill) == 0
 		|| eat_check(fill) == 0)
 	{
+		while (i < fill.rows)
+			free(fill.map[i++]);
+		free(fill.map);
 		ft_printf("Error\n");
 		return ;
 	}
-	else
-	       setup_and_run(filename);
-	i = 0;
 	while (i < fill.rows)
-	{
-		free(fill.map[i]);
-		i++;
-	}
+		free(fill.map[i++]);
+	free(fill.map);
+	setup_and_run(filename,  &fill);
+	while (i < fill.rows)
+		free(fill.map[i++]);
 	free(fill.map);
 }
 
@@ -146,7 +146,6 @@ int	main(int ac, char **av)
 			return (0);
 		}
 		all_func(av[1]);
-		// system("leaks solong");
 		return (0);
 	}
 	else if (ac != 2)
