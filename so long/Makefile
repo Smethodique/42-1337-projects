@@ -1,5 +1,5 @@
 NAME = solong
-SRCS = easy_path.c checkmaps.c 1337Libft/GNL/get_next_line.c 1337Libft/GNL/get_next_line_utils.c if_close.c easy_path2.c animation.c draw.c
+SRCS = easy_path.c checkmaps.c 1337Libft/GNL/get_next_line.c 1337Libft/GNL/get_next_line_utils.c if_close.c easy_path2.c coins_exit.c animation.c draw.c move.c
 OBJS = $(SRCS:.c=.o)
 LIBFT = 1337Libft/libft.a
 CC = gcc

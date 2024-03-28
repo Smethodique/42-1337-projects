@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:46:32 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/24 09:34:36 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/03/28 06:11:12 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	all_func(const char *filename)
 	t_data			data;
 	t_flood_fill	fill;
 	int				i;
+	t_draw_params	params;
 
 	i = 0;
 	fill.arg = filename;
@@ -110,7 +111,7 @@ void	all_func(const char *filename)
 	data.close = check_close(filename);
 	fill.map = convert_map(&fill);
 	if (data.our_r == 0 || data.close == 0 || check_go(&fill) == 0
-		|| eat_check(fill) == 0)
+		|| eat_check(fill) == 0 || ends_with_ber(filename) == 0)
 	{
 		while (i < fill.rows)
 			free(fill.map[i++]);
@@ -118,13 +119,11 @@ void	all_func(const char *filename)
 		ft_printf("Error\n");
 		return ;
 	}
+	setup_and_run(filename, &fill);
 	while (i < fill.rows)
 		free(fill.map[i++]);
 	free(fill.map);
-	setup_and_run(filename,  &fill);
-	while (i < fill.rows)
-		free(fill.map[i++]);
-	free(fill.map);
+	mlx_destroy_window(params.mlx, params.win);
 }
 
 int	main(int ac, char **av)

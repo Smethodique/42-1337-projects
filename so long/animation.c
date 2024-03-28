@@ -6,12 +6,12 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 00:58:33 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/24 10:46:15 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/03/28 04:25:54 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "solong.h"
+#include <mlx.h>
 
 void	est_con(void **mlx)
 {
@@ -39,33 +39,41 @@ void	init_map(t_mini *d)
 			&width, &height);
 }
 
-// void	draw_map(t_flood_fill *fill, t_draw_params *params)
-// {
-
-
-// 	if (!*(params->win))
-// 		return ;
-// 	draw_tiles(fill, params);
-// }
-
-int	key_press(int keycode, t_flood_fill *fill, t_draw_params *params)
+int	destroy(int keycode, t_fp *params)
 {
-	int	draw_x;
-	int	draw_y;
-	
-	printf("ptr is %p fill->y %i fill->x%i\n", params->mlx, fill->y, fill->x);
-	if (keycode == 13 && fill->map[fill->y - 1][fill->x] != '1')
-		fill->y -= 1;
-	else if (keycode == 0)
-		fill->x -= 1;
-	else if (keycode == 1)
-		fill->y += 1;
-	else if (keycode == 2)
-		fill->x += 1;
-	draw_x = fill->x * 40;
-	draw_y = fill->y * 40;
-	mlx_put_image_to_window(params->mlx, params->win, params->ball_img,
-		draw_x, draw_y);
+	if (keycode == 53)
+	{
+		mlx_destroy_window(params->dp->mlx, params->dp->win);
+		exit(0);
+	}
+	return (1);
+}
+
+int	move_player(int keycode, t_fp *params)
+{
+	static int	move = 0;
+
+	if ((keycode == 13 && params->f->map[params->f->y - 1][params->f->x] != '1')
+		|| (keycode == 0 && params->f->x > 0
+			&& params->f->map[params->f->y][params->f->x - 1] != '1')
+		|| (keycode == 1 && params->f->y < params->f->rows - 1
+			&& params->f->map[params->f->y + 1][params->f->x] != '1')
+		|| (keycode == 2 && params->f->x < params->f->cols - 1
+			&& params->f->map[params->f->y][params->f->x + 1] != '1'))
+	{
+		move++;
+		ft_printf("Move : %d \n", move);
+		if (keycode == 13)
+			move_player_up(params->f, params->dp);
+		else if (keycode == 0)
+			move_player_left(params->f, params->dp);
+		else if (keycode == 1)
+			move_player_down(params->f, params->dp);
+		else if (keycode == 2)
+			move_player_right(params->f, params->dp);
+	}
+	if_eat(params->f, params);
+	destroy(keycode, params);
 	return (0);
 }
 
@@ -75,30 +83,24 @@ void	setup_and_run(const char *filename, t_flood_fill *fill)
 	void			*win;
 	t_mini			d;
 	t_draw_params	params;
-
+	t_fp			param;
 
 	params.tile_size = 40;
 	params.window_width = fill->cols * params.tile_size;
 	params.window_height = fill->rows * params.tile_size;
-	printf("Rows: %d, Cols: %d\n",params.window_width, params.window_height);
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, params.window_width,params.window_height, "Map Window");
-	if (!params.win)
-		mlx_destroy_window(params.mlx, params.win);
-	if (!mlx || !win)
-		exit(1);
+	win = mlx_new_window(mlx, params.window_width, params.window_height,
+			"Map Window");
 	d.init_ptr = mlx;
-	init_map(params.d);
+	params.d = &d;
+	init_map(&d);
 	fill->arg = filename;
 	fill->map = convert_map(fill);
 	params.mlx = mlx;
 	params.win = win;
-	printf("ptr is %p\n", params.mlx);
-
-	//mlx_put_image_to_window(params.mlx, params.win, params.d->wall, 10, 10);
-	//draw_map(fill, &params);
+	param.dp = &params;
+	param.f = fill;
 	draw_tiles(fill, &params);
-
-	mlx_hook(win, 2, 1L << 0, key_press, &fill);
+	mlx_key_hook(win, move_player, &param);
 	mlx_loop(mlx);
 }
