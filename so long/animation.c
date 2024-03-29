@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 00:58:33 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/28 04:25:54 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/03/29 03:32:01 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ int	destroy(int keycode, t_fp *params)
 
 int	move_player(int keycode, t_fp *params)
 {
-	static int	move = 0;
-
 	if ((keycode == 13 && params->f->map[params->f->y - 1][params->f->x] != '1')
 		|| (keycode == 0 && params->f->x > 0
 			&& params->f->map[params->f->y][params->f->x - 1] != '1')
@@ -61,8 +59,7 @@ int	move_player(int keycode, t_fp *params)
 		|| (keycode == 2 && params->f->x < params->f->cols - 1
 			&& params->f->map[params->f->y][params->f->x + 1] != '1'))
 	{
-		move++;
-		ft_printf("Move : %d \n", move);
+		check_and_increment_move(params->f);
 		if (keycode == 13)
 			move_player_up(params->f, params->dp);
 		else if (keycode == 0)
@@ -102,5 +99,6 @@ void	setup_and_run(const char *filename, t_flood_fill *fill)
 	param.f = fill;
 	draw_tiles(fill, &params);
 	mlx_key_hook(win, move_player, &param);
+	mlx_hook(win, 17, 0, close_win, &param);
 	mlx_loop(mlx);
 }

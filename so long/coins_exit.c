@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:46:32 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/28 06:18:01 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/03/29 04:26:28 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,12 @@ int	if_eat(t_flood_fill *fill, t_fp *params)
 	if (coin == 0 && fill->map[fill->y][fill->x] == 'E')
 	{
 		mlx_destroy_window(params->dp->mlx, params->dp->win);
+		system("leaks so_long");
 		exit(1);
 	}
 	return (0);
 }
+
 int	ft_strcmp(const char *s1, const char *s2)
 {
 	while (*s1 == *s2)
@@ -77,4 +79,11 @@ int	ends_with_ber(const char *filename)
 		return (1);
 	}
 	return (0);
+}
+
+int	close_win(t_fp *params)
+{
+	mlx_destroy_window(params->dp->mlx, params->dp->win);
+	exit(1);
+	return (1);
 }

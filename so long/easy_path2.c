@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 03:58:06 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/28 02:37:19 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/03/29 04:20:59 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,14 @@ int	check_go(t_flood_fill *fill)
 			return (1);
 	}
 	return (0);
+}
+
+int	check_size(t_flood_fill *fill)
+{
+	if (fill->rows > 35 || fill->cols > 64)
+	{
+		return (0);
+	}
+	else
+		return (1);
 }

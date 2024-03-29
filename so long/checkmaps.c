@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:46:32 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/28 06:11:12 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/03/29 04:59:46 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,30 +71,29 @@ int	validate_map(const char *map)
 
 int	rect_check(const char *filename)
 {
-	int		fd;
-	char	*line;
-	int		length;
-	int		line_num;
-	int		first_len;
+	t_validation_info	info;
 
-	line_num = 0;
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		return (0);
-	line = get_next_line(fd);
-	while (line != NULL)
+	info.line_num = 0;
+	info.fd = open(filename, O_RDONLY);
+	info.line = get_next_line(info.fd);
+	while (info.line != NULL)
 	{
-		length = 0;
-		while (line[length] != '\0' && line[length] != '\n')
-			length++;
-		if (line_num == 0)
-			first_len = length;
-		else if (length != first_len)
+		info.length = 0;
+		while (info.line[info.length] != '\0' && info.line[info.length] != '\n')
+			info.length++;
+		if (info.line_num == 0)
+			info.first_len = info.length;
+		else if (info.length != info.first_len)
+		{
+			free(info.line);
+			close(info.fd);
 			return (0);
-		free(line);
-		line = get_next_line(fd);
-		line_num++;
+		}
+		free(info.line);
+		info.line = get_next_line(info.fd);
+		info.line_num++;
 	}
+	close(info.fd);
 	return (1);
 }
 
@@ -111,7 +110,8 @@ void	all_func(const char *filename)
 	data.close = check_close(filename);
 	fill.map = convert_map(&fill);
 	if (data.our_r == 0 || data.close == 0 || check_go(&fill) == 0
-		|| eat_check(fill) == 0 || ends_with_ber(filename) == 0)
+		|| eat_check(fill) == 0 || ends_with_ber(filename) == 0
+		|| check_size(&fill) == 0)
 	{
 		while (i < fill.rows)
 			free(fill.map[i++]);
@@ -141,10 +141,13 @@ int	main(int ac, char **av)
 		val = validate_map(data.convert);
 		if (val == 0)
 		{
+			system("leaks so_long");
 			printf("Error\n");
+			free(data.convert);
 			return (0);
 		}
 		all_func(av[1]);
+		system("leaks so_long");
 		return (0);
 	}
 	else if (ac != 2)

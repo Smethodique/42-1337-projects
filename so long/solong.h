@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 17:44:45 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/28 06:16:13 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/03/29 04:58:41 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,15 @@ typedef struct s_flood_fill
 	int				i;
 	int				j;
 }					t_flood_fill;
+
+typedef struct s_validation_info
+{
+	int				line_num;
+	int				fd;
+	char			*line;
+	int				length;
+	int				first_len;
+}					t_validation_info;
 
 typedef struct s_data
 {
@@ -118,5 +127,8 @@ int					destroy(int keycode, t_fp *params);
 int					ends_with_ber(const char *filename);
 int					if_eat(t_flood_fill *fill, t_fp *params);
 int					ft_strcmp(const char *s1, const char *s2);
-
+int					close_win(t_fp *params);
+int					move_player(int keycode, t_fp *params);
+void				check_and_increment_move(t_flood_fill *f);
+int					check_size(t_flood_fill *fill);
 #endif
