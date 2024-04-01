@@ -72,7 +72,7 @@ char	*generate_big_map(void)
 	return (map);
 }
 
-int	main(void)
+int	main(int ac char **av)
 {
 	char *big_map;
 
