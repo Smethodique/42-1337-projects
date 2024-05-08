@@ -1,46 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_calclen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 22:15:49 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/10 02:06:28 by stakhtou         ###   ########.fr       */
+/*   Created: 2023/11/14 15:27:24 by stakhtou          #+#    #+#             */
+/*   Updated: 2024/03/10 00:27:26 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-static char	*f_strcpy(char *dst, const char *src)
+int	ft_calclen(int n)
 {
-	int	i;
+	int	len;
 
-	i = 0;
-	while (src[i] != '\0')
+	len = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
 	{
-		dst[i] = src[i];
-		i++;
+		len++;
+		n = -n;
 	}
-	dst[i] = '\0';
-	return (dst);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	char	*ptr;
-	size_t	i;
-
-	i = 0;
-	while (s1[i] != '\0')
+	while (n != 0)
 	{
-		i++;
+		n = n / 10;
+		len++;
 	}
-	ptr = malloc(sizeof(char) * (i + 1));
-	if (ptr == NULL)
-	{
-		return (NULL);
-	}
-	f_strcpy(ptr, s1);
-	return (ptr);
+	return (len);
 }

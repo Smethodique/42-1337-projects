@@ -1,46 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putunsdec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 22:15:49 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/10 02:06:28 by stakhtou         ###   ########.fr       */
+/*   Created: 2023/11/30 20:27:55 by stakhtou          #+#    #+#             */
+/*   Updated: 2024/03/10 00:28:02 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-static char	*f_strcpy(char *dst, const char *src)
+int	ft_putundec(unsigned int num)
 {
-	int	i;
+	int	len;
 
-	i = 0;
-	while (src[i] != '\0')
+	len = 0;
+	if (num == 0)
 	{
-		dst[i] = src[i];
-		i++;
+		ft_putchar('0', &len);
+		return (len);
 	}
-	dst[i] = '\0';
-	return (dst);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	char	*ptr;
-	size_t	i;
-
-	i = 0;
-	while (s1[i] != '\0')
+	else if (num == 4294967295)
+		return (ft_putstr("4294967295"));
+	else
 	{
-		i++;
+		if (num <= 9)
+		{
+			ft_putchar('0' + num, &len);
+			return (len);
+		}
+		else
+		{
+			len += ft_putundec(num / 10);
+			len += ft_putundec(num % 10);
+			return (len);
+		}
 	}
-	ptr = malloc(sizeof(char) * (i + 1));
-	if (ptr == NULL)
-	{
-		return (NULL);
-	}
-	f_strcpy(ptr, s1);
-	return (ptr);
 }

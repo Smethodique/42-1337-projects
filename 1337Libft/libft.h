@@ -6,14 +6,19 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:13:22 by stakhtou          #+#    #+#             */
-/*   Updated: 2023/11/24 05:05:06 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/04/03 08:03:08 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100000
+# endif
 # include <fcntl.h>
+# include <limits.h>
+# include <stdarg.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -39,10 +44,11 @@ char	*ft_strrchr(const char *s, int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 void	*ft_calloc(size_t count, size_t size);
+char	*ft_strcpy(char *s1, char *s2);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *line, char *buff);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
@@ -52,4 +58,18 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+char	*readex_line(int fd, char *line);
+char	*zyada_mn_rass_l7me9(char *line);
+char	*get_next_line(int fd);
+
+int		ft_putchar(char c, int *len);
+int		ft_putstr(char *str);
+int		ft_putuphex(size_t c);
+int		ft_puthex(size_t c);
+int		ft_putdec(long num);
+int		ft_putundec(unsigned int num);
+int		ft_calclen(int n);
+int		ft_printf(const char *printer, ...);
+int		ft_putadress(void *add);
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
 #endif

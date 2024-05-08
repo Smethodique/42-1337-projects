@@ -1,46 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 22:15:49 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/10 02:06:28 by stakhtou         ###   ########.fr       */
+/*   Created: 2023/11/30 20:09:19 by stakhtou          #+#    #+#             */
+/*   Updated: 2024/03/10 00:27:53 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-static char	*f_strcpy(char *dst, const char *src)
+int	ft_puthex(size_t c)
 {
-	int	i;
+	int		j;
+	char	buffer[2000];
+	int		i;
+	int		len;
 
+	len = 0;
+	if (c == 0)
+		ft_putchar('0', &len);
 	i = 0;
-	while (src[i] != '\0')
+	while (c > 0)
 	{
-		dst[i] = src[i];
-		i++;
+		j = c % 16;
+		c = c / 16;
+		if (j < 10)
+			buffer[i++] = '0' + j;
+		else if (j >= 10)
+			buffer[i++] = 'a' + (j - 10);
 	}
-	dst[i] = '\0';
-	return (dst);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	char	*ptr;
-	size_t	i;
-
-	i = 0;
-	while (s1[i] != '\0')
+	while (i > 0)
 	{
-		i++;
+		len++;
+		write(1, &buffer[--i], 1);
 	}
-	ptr = malloc(sizeof(char) * (i + 1));
-	if (ptr == NULL)
-	{
-		return (NULL);
-	}
-	f_strcpy(ptr, s1);
-	return (ptr);
+	return (len);
 }
