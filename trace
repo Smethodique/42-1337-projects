@@ -1,0 +1,33 @@
+==553== 
+==553== HEAP SUMMARY:
+==553==     in use at exit: 122,726 bytes in 216 blocks
+==553==   total heap usage: 1,113 allocs, 897 frees, 3,291,418 bytes allocated
+==553== 
+==553== 36 bytes in 1 blocks are definitely lost in loss record 18 of 64
+==553==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==553==    by 0x1100B1: zyada_mn_rass_l7me9 (in /nfs/homes/stakhtou/Desktop/jh/so--long/so_long)
+==553==    by 0x1102BA: get_next_line (in /nfs/homes/stakhtou/Desktop/jh/so--long/so_long)
+==553==    by 0x1106C8: lf_char (in /nfs/homes/stakhtou/Desktop/jh/so--long/so_long)
+==553==    by 0x11079D: check_close (in /nfs/homes/stakhtou/Desktop/jh/so--long/so_long)
+==553==    by 0x10FCEB: all_func (in /nfs/homes/stakhtou/Desktop/jh/so--long/so_long)
+==553==    by 0x10FF53: main (in /nfs/homes/stakhtou/Desktop/jh/so--long/so_long)
+==553== 
+==553== 129 (24 direct, 105 indirect) bytes in 1 blocks are definitely lost in loss record 35 of 64
+==553==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==553==    by 0x10F6A5: convert2d (in /nfs/homes/stakhtou/Desktop/jh/so--long/so_long)
+==553==    by 0x10F74F: convert_map (in /nfs/homes/stakhtou/Desktop/jh/so--long/so_long)
+==553==    by 0x10FCFA: all_func (in /nfs/homes/stakhtou/Desktop/jh/so--long/so_long)
+==553==    by 0x10FF53: main (in /nfs/homes/stakhtou/Desktop/jh/so--long/so_long)
+==553== 
+==553== LEAK SUMMARY:
+==553==    definitely lost: 60 bytes in 2 blocks
+==553==    indirectly lost: 105 bytes in 3 blocks
+==553==      possibly lost: 0 bytes in 0 blocks
+==553==    still reachable: 122,561 bytes in 211 blocks
+==553==         suppressed: 0 bytes in 0 blocks
+==553== Reachable blocks (those to which a pointer was found) are not shown.
+==553== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==553== 
+==553== Use --track-origins=yes to see where uninitialised values come from
+==553== For lists of detected and suppressed errors, rerun with: -s
+==553== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
