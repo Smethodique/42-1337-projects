@@ -61,7 +61,7 @@
 
 ## Project Structure
 
-- `src/` - Contains the source code files.
-- `include/` - Contains the header files.
-- `maps/` - Contains example map files.
+- `so_long/` - Contains the source code files.
+- `solong.h/` - Contains the header files.
+- `map/` - Contains example map files.
 - `Makefile` - Makefile to build the project.
