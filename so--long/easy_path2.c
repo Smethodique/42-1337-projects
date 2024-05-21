@@ -87,13 +87,13 @@ int	check_go(t_flood_fill *fill)
 	e_col = fill->j;
 	if (e_row >= 0 && e_row < fill->rows && e_col >= 0 && e_col < fill->cols)
 	{
-		if ((e_row > 0 && fill->map[e_row - 1][e_col] != '1')
-			|| (e_row < fill->rows - 1 && fill->map[e_row + 1][e_col] != '1')
-			|| (e_col > 0 && fill->map[e_row][e_col - 1] != '1')
-			|| (e_col < fill->cols - 1 && fill->map[e_row][e_col + 1] != '1'))
-			return (1);
+		if ((e_row > 0 && fill->map[e_row - 1][e_col] != '-')
+			&& (e_row < fill->rows - 1 && fill->map[e_row + 1][e_col] != '-')
+			&& (e_col > 0 && fill->map[e_row][e_col - 1] != '-')
+			&& (e_col < fill->cols - 1 && fill->map[e_row][e_col + 1] != '-'))
+			return (0);
 	}
-	return (0);
+	return (1);
 }
 
 int	check_size(t_flood_fill *fill)
