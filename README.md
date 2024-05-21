@@ -8,5 +8,7 @@ This repository contains various projects completed as part of the 42 curriculum
 - [Project 3: get_next_line](./GNL)
 - [Project 4: born to be root](./Born2BeRoot)
 - [Project 5: MiniTalk ](./MiniTalk)
+- [Project 6: so_long ](./so_long)
 
-project 6 : PushSwap(soon...)
+
+project 7 : PushSwap(soon...)
