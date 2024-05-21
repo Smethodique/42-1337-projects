@@ -20,7 +20,7 @@
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/so_long.git
+    git clone https://github.com/Smethodique/so_long.git
     cd so_long
     ```
 
