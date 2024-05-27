@@ -11,6 +11,20 @@ int	isnumarg(char *arg)
 	i = 0;
 	while (arg[i])
 	{
+		if (!ft_isdigit(arg[i]))
+			printf("%s", arg);
+		return (0);
+		i++;
+	}
+	return (1);
+}
+int	parse_args(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
 		if (arg[i] == '-' || arg[i] == '+')
 		{
 			if (i != 0 && arg[i - 1] != ' ')
@@ -27,35 +41,39 @@ int	isnumarg(char *arg)
 	return (1);
 }
 
-
-
-void	free_args(char **arr)
+int	process_args(char *arg, int argc, char *argv[])
 {
-	int	k;
+	char	**split;
 
-	k = 0;
-	while (arr[k])
+	arg = join_args_in_str(argc, argv);
+	split = split_args(argc, argv);
+	if (dup_check(arg) == 0)
 	{
-		free(arr[k]);
-		k++;
+		printf("Error\n");
+		free(arg);
+		free_split(split);
+		system("leaks push_swap");
+		exit(1);
 	}
-	free(arr);
+	free(arg);
+	free_split(split);
+	return (1);
 }
-
 
 int	main(int argc, char *argv[])
 {
-	Stack stack;
-	if (argc < 2 )
+	Stack	*stack;
+	if (argc < 2)
 	{
-		ft_printf("Error\n");
 		return (1);
 	}
-	
-	initialize(&stack);
-	add_tostack(&stack, argc, argv);
-	if (is_stack_sorted(&stack))
-		return (1);
-	print_stack(&stack);
+	stack = malloc(sizeof(Stack));
+	stack->top = NULL;
+	process_args(argv[1], argc, argv);
+	add_to_stackk(stack, argc, argv);
+	print_stack(stack);
+	free_stack(stack);
+	free(stack);
+	system("leaks push_swap");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:05:45 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/04/03 08:02:49 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/05/26 22:35:11 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,32 +30,41 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	return (dest);
 }
 
-long long ft_atoi(const char *str)
+int	ft_isspace(char c)
 {
-	int i;
-	int sgn;
-	long long res;
-
-	i = 0;
-	sgn = 1;
-	res = 0;
-	while (str[i] == ' ' || ((9 <= str[i]) && (str[i] <= 13)))
-		i++;
-	if (str[i] == '+')
-		i++;
-	else if (str[i] == '-')
-	{
-		sgn = -1;
-		i++;
-	}
-	while (str[i] && ('0' <= str[i]) && (str[i] <= '9'))
-	{
-		res = (res * 10) + (str[i] - '0');
-		i++;
-	}
-	return (sgn * res);
+	if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
+		|| c == '\r')
+		return (1);
+	return (0);
 }
 
+long double	ft_atoi(const char *str)
+{
+	int			i;
+	long long	res;
+	int			sign;
+
+	sign = 1;
+	i = 0;
+	res = 0;
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '-')
+		sign = -1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (!(str[i] >= '0' && str[i] <= '9'))
+		exit(printf("Error\n") * 0 + 1);
+	;
+	while (ft_isdigit(str[i]))
+		res = (res * 10) + (str[i++] - '0');
+	if (res > 2147483647 || res < -2147483648)
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(1);
+	}
+	return (res * sign);
+}
 
 // int	main(void)
 // {
