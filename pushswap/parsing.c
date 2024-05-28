@@ -74,6 +74,5 @@ int	main(int argc, char *argv[])
 	print_stack(stack);
 	free_stack(stack);
 	free(stack);
-	system("leaks push_swap");
 	return (0);
 }

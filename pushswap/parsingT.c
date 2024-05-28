@@ -91,7 +91,6 @@ char	*join_args_in_str(int argc, char *argv[])
 	if (parse_args(str) == 0)
 	{
 		printf("Error\n");
-		free(str);
 		printf("%s\n", str);
 		exit(1);
 	}
@@ -123,19 +122,21 @@ int	*split_to_int(char **split, int argc)
 	return (arr);
 }
 
-char	**split_args(int argc, char *argv[])
+char **split_args(int argc, char *argv[])
 {
-	char	*args;
-	char	**split;
-	int		i;
+    char *args;
+    char **split;
 
-	args = join_args_in_str(argc, argv);
-	split = ft_split(args, ' ');
-	i = 0;
-	while (split[i] != NULL)
-	{
-		ft_split(split[i], ' ');
-		i++;
-	}
-	return (split);
+    args = join_args_in_str(argc, argv);
+    if (!args)
+        return NULL;
+
+    
+    split = ft_split(args, ' ');
+    free(args); 
+
+    if (!split)
+        return NULL;
+
+    return split;
 }
