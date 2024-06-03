@@ -1,5 +1,5 @@
 NAME = push_swap
-SRCS = parsing.c parsingT.c linkedlis.c
+SRCS = parsing.c parsingT.c linkedlis.c move.c moveT.c sortAlgo.c
 OBJS = $(SRCS:.c=.o)
 LIBFT = 1337Libft/libft.a
 CC = gcc

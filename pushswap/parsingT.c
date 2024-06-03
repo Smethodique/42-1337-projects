@@ -64,13 +64,7 @@ void	add_to_stackk(Stack *stack, int argc, char *argv[])
 			j++;
 		}
 		free(numbers);
-		j = 0;
-		while (split[j] != NULL)
-		{
-			free(split[j]); 
-			j++;
-		}
-		free(split);
+		free_split(split);
 		i++;
 	}
 }
@@ -91,7 +85,6 @@ char	*join_args_in_str(int argc, char *argv[])
 	if (parse_args(str) == 0)
 	{
 		printf("Error\n");
-		printf("%s\n", str);
 		exit(1);
 	}
 	return (str);
@@ -122,21 +115,17 @@ int	*split_to_int(char **split, int argc)
 	return (arr);
 }
 
-char **split_args(int argc, char *argv[])
+char	**split_args(int argc, char *argv[])
 {
-    char *args;
-    char **split;
+	char	*args;
+	char	**split;
 
-    args = join_args_in_str(argc, argv);
-    if (!args)
-        return NULL;
-
-    
-    split = ft_split(args, ' ');
-    free(args); 
-
-    if (!split)
-        return NULL;
-
-    return split;
+	args = join_args_in_str(argc, argv);
+	if (!args)
+		return (NULL);
+	split = ft_split(args, ' ');
+	free(args);
+	if (!split)
+		return (NULL);
+	return (split);
 }

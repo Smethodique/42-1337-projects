@@ -44,18 +44,6 @@ int	is_stack_sorted(Stack *stack)
 	}
 	return (1);
 }
-void free_stack(Stack *stack) {
-    t_node *current = stack->top;
-    t_node *next_node;
-
-    while (current != NULL) {
-        next_node = current->next;
-        free(current);  
-        current = next_node;  
-    }
-
-    stack->top = NULL;  
-}
 
 void	print_stack(Stack *stack)
 {
