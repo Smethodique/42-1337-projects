@@ -1,14 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
+/*   Updated: 2024/06/05 08:45:03 by stakhtou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	do_sa(Stack *stack, int flag)
+void	do_sa(Stack *Stack, int flag)
 {
 	t_node	*temp;
 	int		temp_data;
 
-	if (stack->top == NULL || stack->top->next == NULL)
+	if (Stack->top == NULL || Stack->top->next == NULL)
 		return ;
-	temp = stack->top;
+	temp = Stack->top;
 	temp_data = temp->data;
 	temp->data = temp->next->data;
 	temp->next->data = temp_data;
@@ -18,49 +29,48 @@ void	do_sa(Stack *stack, int flag)
 		ft_printf("sb\n");
 }
 
-void	do_ss(Stack *stack_a, Stack *stack_b)
+void	do_ss(Stack *Stack_a, Stack *Stack_b)
 {
-	do_sa(stack_a, 0);
-	do_sa(stack_b, 0);
+	do_sa(Stack_a, 0);
+	do_sa(Stack_b, 0);
 	ft_printf("ss\n");
 }
-void	do_pa(Stack *stack_a, Stack *stack_b)
+void	do_pa(Stack *Stack_a, Stack *Stack_b)
 {
 	t_node	*temp;
 
-	if (stack_b->top == NULL)
+	if (Stack_b->top == NULL)
 		return ;
-	temp = stack_b->top;
-	stack_b->top = stack_b->top->next;
-	temp->next = stack_a->top;
-	stack_a->top = temp;
+	temp = Stack_b->top;
+	Stack_b->top = Stack_b->top->next;
+	temp->next = Stack_a->top;
+	Stack_a->top = temp;
 	ft_printf("pa\n");
 }
 
-void	do_pb(Stack *stack_a, Stack *stack_b)
+void	do_pb(Stack *Stack_a, Stack *Stack_b)
 {
-
 	t_node	*temp;
 
-	if (stack_a->top == NULL)
+	if (Stack_a->top == NULL)
 		return ;
-	temp = stack_a->top;
-	stack_a->top = stack_a->top->next;
-	temp->next = stack_b->top;
-	stack_b->top = temp;
+	temp = Stack_a->top;
+	Stack_a->top = Stack_a->top->next;
+	temp->next = Stack_b->top;
+	Stack_b->top = temp;
 	ft_printf("pb\n");
 }
 
-void	do_ra(Stack *stack, int flag)
+void	do_ra(Stack *Stack, int flag)
 {
 	t_node	*temp;
 	t_node	*temp2;
 
-	if (stack->top == NULL || stack->top->next == NULL)
+	if (Stack->top == NULL || Stack->top->next == NULL)
 		return ;
-	temp = stack->top;
-	stack->top = stack->top->next;
-	temp2 = stack->top;
+	temp = Stack->top;
+	Stack->top = Stack->top->next;
+	temp2 = Stack->top;
 	while (temp2->next != NULL)
 		temp2 = temp2->next;
 	temp2->next = temp;

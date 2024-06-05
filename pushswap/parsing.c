@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
+/*   Updated: 2024/06/05 09:00:38 by stakhtou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 #include <limits.h>
 #include <stdio.h>
@@ -75,17 +87,14 @@ void	pushT(Stack *stack, int data)
 {
 	t_node	*new_node;
 
-	// Create a new node
 	new_node = (t_node *)malloc(sizeof(t_node));
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Out of memory\n");
 		exit(1);
 	}
-	// Set the data and next node
 	new_node->data = data;
 	new_node->next = stack->top;
-	// Set the new node as the top of the stack
 	stack->top = new_node;
 }
 
@@ -111,7 +120,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 
-	 sort_more(stack, stack_b);
+	sort_more(stack, stack_b);
 	if (is_stack_sorted(stack) == 1)
 		printf("OK\n");
 

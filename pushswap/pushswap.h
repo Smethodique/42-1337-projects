@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pushswap.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
+/*   Updated: 2024/06/05 08:45:03 by stakhtou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSHSWAP_H
 # define PUSHSWAP_H
 # include "1337Libft/libft.h"
@@ -7,6 +19,13 @@ typedef struct s_node
 	int				data;
 	struct s_node	*next;
 }					t_node;
+
+typedef struct s_push
+{
+	int				*start;
+	int				*end;
+	int				*rotations;
+}					t_push;
 
 typedef struct
 {
@@ -23,7 +42,7 @@ int					*split_to_int(char **split, int len);
 int					process_args(char *arg, int argc, char *argv[]);
 void				push(Stack *stack, int value);
 void				add_to_stackk(Stack *stack, int argc, char *argv[]);
-void				print_stack(Stack *stack);
+void				prinStack(Stack *stack);
 void				free_split(char **split);
 void				do_sa(Stack *stack, int flag);
 void				do_ss(Stack *stack_a, Stack *stack_b);
@@ -41,12 +60,13 @@ int					is_empty(Stack *stack_b);
 int					stack_size(Stack *stack);
 int					find_max_index(Stack *stack);
 int					find_min_index(Stack *stack);
-void sort_six(Stack *stack_a, Stack *stack_b);
-void sort_seven(Stack *stack_a, Stack *stack_b);
-void sort_eight(Stack *stack_a, Stack *stack_b);
-int* copy_stack_to_array(Stack *stack);
-
-int* sorting_array(int *arr, int size);
-void sort_more(Stack *stack_a, Stack *stack_b);
+int					find_position(Stack *stack, int value);
+int					find_max_value(Stack *stack);
+int					*copy_stack_to_array(Stack *stack);
+void				sort_fivet(Stack *stack_a, Stack *stack_b);
+int					*sorting_array(int *arr, int size);
+void				sort_more(Stack *stack_a, Stack *stack_b);
+int					*copy_arrayy(int *arr, int size);
+void				sort_array(int *arr, int size);
 
 #endif

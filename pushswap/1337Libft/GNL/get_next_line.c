@@ -6,14 +6,14 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 10:02:46 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/03/18 02:17:52 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/05 07:22:19 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../libft.h"
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "../libft.h"
 
 char	*readex_line(int fd, char *line)
 {
@@ -32,7 +32,7 @@ char	*readex_line(int fd, char *line)
 			free(buff);
 			return (NULL);
 		}
-		buff [rd] = '\0';
+		buff[rd] = '\0';
 		line = ft_strjoin(line, buff);
 	}
 	free(buff);

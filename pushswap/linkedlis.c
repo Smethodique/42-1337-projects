@@ -1,14 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   linkedlis.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
+/*   Updated: 2024/06/05 08:58:59 by stakhtou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "pushswap.h"
-#include <stdio.h>
-#include <stdlib.h>
 
-void	initialize(Stack *stack)
+void	initialize(Stack *Stack)
 {
-	stack->top = NULL;
+	Stack->top = NULL;
 }
 
-void	push(Stack *stack, int data)
+void	push(Stack *Stack, int data)
 {
 	t_node	*new_node;
 	t_node	*current;
@@ -16,13 +25,13 @@ void	push(Stack *stack, int data)
 	new_node = (t_node *)malloc(sizeof(t_node));
 	new_node->data = data;
 	new_node->next = NULL;
-	if (stack->top == NULL)
+	if (Stack->top == NULL)
 	{
-		stack->top = new_node;
+		Stack->top = new_node;
 	}
 	else
 	{
-		current = stack->top;
+		current = Stack->top;
 		while (current->next != NULL)
 		{
 			current = current->next;
@@ -31,11 +40,11 @@ void	push(Stack *stack, int data)
 	}
 }
 
-int	is_stack_sorted(Stack *stack)
+int	is_stack_sorted(Stack *Stack)
 {
 	t_node	*current;
 
-	current = stack->top;
+	current = Stack->top;
 	while (current->next != NULL)
 	{
 		if (current->data > current->next->data)
@@ -45,15 +54,40 @@ int	is_stack_sorted(Stack *stack)
 	return (1);
 }
 
-void	print_stack(Stack *stack)
+int	find_max_index(Stack *Stack)
 {
-	t_node	*current;
+	int		max;
+	t_node	*tmp;
+	int		i;
+	int		index;
 
-	current = stack->top;
-	while (current != NULL)
+	max = Stack->top->data;
+	tmp = Stack->top;
+	i = 0;
+	index = 0;
+	while (tmp)
 	{
-		printf("%d\n", current->data);
-
-		current = current->next;
+		if (tmp->data > max)
+		{
+			max = tmp->data;
+			index = i;
+		}
+		tmp = tmp->next;
+		i++;
 	}
+	return (index);
+}
+char	**split_args(int argc, char *argv[])
+{
+	char	*args;
+	char	**split;
+
+	args = join_args_in_str(argc, argv);
+	if (!args)
+		return (NULL);
+	split = ft_split(args, ' ');
+	free(args);
+	if (!split)
+		return (NULL);
+	return (split);
 }

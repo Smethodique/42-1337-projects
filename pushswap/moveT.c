@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moveT.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
+/*   Updated: 2024/06/05 08:46:48 by stakhtou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
 void	do_rra(Stack *stack, int flag)
 {
-	t_node *temp;
-	t_node *temp2;
+	t_node	*temp;
+	t_node	*temp2;
 
 	if (stack->top == NULL || stack->top->next == NULL)
 		return ;
@@ -19,16 +31,17 @@ void	do_rra(Stack *stack, int flag)
 	else if (flag == 2)
 		ft_printf("rrb\n");
 }
+
 void	do_rr(Stack *stack_a, Stack *stack_b)
 {
 	do_ra(stack_a, 0);
 	do_ra(stack_b, 0);
 	ft_printf("rr\n");
 }
+
 void	do_rrr(Stack *stack_a, Stack *stack_b)
 {
 	do_rra(stack_a, 0);
 	do_rra(stack_b, 0);
 	ft_printf("rrr\n");
 }
-

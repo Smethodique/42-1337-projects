@@ -1,9 +1,9 @@
 NAME = push_swap
-SRCS = parsing.c parsingT.c linkedlis.c move.c moveT.c sortAlgo.c
+SRCS = parsing.c parsingT.c linkedlis.c move.c moveT.c sortAlgo.c sortAlgoT.c sortAlgoTH.c sortAlgoF.c 
 OBJS = $(SRCS:.c=.o)
 LIBFT = 1337Libft/libft.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g 
+CFLAGS = -Wall -Wextra -Werror 
 LDFLAGS = -L 1337Libft -lft 
 
 all: $(NAME)

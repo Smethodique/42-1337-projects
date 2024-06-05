@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:05:45 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/05/26 22:35:11 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/05 07:23:15 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ long double	ft_atoi(const char *str)
 		i++;
 	if (!(str[i] >= '0' && str[i] <= '9'))
 		exit(printf("Error\n") * 0 + 1);
-	;
 	while (ft_isdigit(str[i]))
 		res = (res * 10) + (str[i++] - '0');
 	if (res > 2147483647 || res < -2147483648)

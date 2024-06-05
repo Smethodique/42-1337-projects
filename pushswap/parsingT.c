@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsingT.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
+/*   Updated: 2024/06/05 08:44:38 by stakhtou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 #include <limits.h>
 #include <stdio.h>
@@ -89,6 +101,7 @@ char	*join_args_in_str(int argc, char *argv[])
 	}
 	return (str);
 }
+
 int	*split_to_int(char **split, int argc)
 {
 	int	i;
@@ -113,19 +126,4 @@ int	*split_to_int(char **split, int argc)
 	while (i < argc - 1)
 		i++;
 	return (arr);
-}
-
-char	**split_args(int argc, char *argv[])
-{
-	char	*args;
-	char	**split;
-
-	args = join_args_in_str(argc, argv);
-	if (!args)
-		return (NULL);
-	split = ft_split(args, ' ');
-	free(args);
-	if (!split)
-		return (NULL);
-	return (split);
 }
