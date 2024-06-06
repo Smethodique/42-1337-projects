@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/05 08:44:38 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:40:38 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	dup_check(char *arg)
 	free_split(split);
 	return (1);
 }
+
 void	free_split(char **split)
 {
 	int	i;
@@ -53,7 +54,8 @@ void	free_split(char **split)
 	}
 	free(split);
 }
-void	add_to_stackk(Stack *stack, int argc, char *argv[])
+
+void	add_to_stackk(t_Stack *stack, int argc, char *argv[])
 {
 	int		i;
 	char	**split;

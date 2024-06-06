@@ -6,13 +6,13 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 21:53:53 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/05 08:45:03 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:41:28 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	find_position(Stack *Stack, int value)
+int	find_position(t_Stack *Stack, int value)
 {
 	t_node	*tmp;
 	int		i;
@@ -29,7 +29,7 @@ int	find_position(Stack *Stack, int value)
 	return (-1);
 }
 
-int	find_max_value(Stack *Stack)
+int	find_max_value(t_Stack *Stack)
 {
 	int		max;
 	t_node	*tmp;
@@ -65,7 +65,7 @@ int	*copy_arrayy(int *arr, int size)
 	return (copy);
 }
 
-int	find_min_index(Stack *Stack)
+int	find_min_index(t_Stack *Stack)
 {
 	int		min;
 	t_node	*tmp;

@@ -6,15 +6,13 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/05 08:45:03 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:41:44 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-
-
-void	sort_two(Stack *Stack)
+void	sort_two(t_Stack *Stack)
 {
 	if (Stack->top == NULL || Stack->top->next == NULL)
 		return ;
@@ -22,7 +20,7 @@ void	sort_two(Stack *Stack)
 		do_sa(Stack, 1);
 }
 
-void	sort_three(Stack *Stack)
+void	sort_three(t_Stack *Stack)
 {
 	int	max;
 

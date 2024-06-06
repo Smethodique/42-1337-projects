@@ -6,18 +6,18 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/05 08:58:59 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:48:58 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	initialize(Stack *Stack)
+void	initialize(t_Stack *Stack)
 {
 	Stack->top = NULL;
 }
 
-void	push(Stack *Stack, int data)
+void	push(t_Stack *Stack, int data)
 {
 	t_node	*new_node;
 	t_node	*current;
@@ -40,7 +40,7 @@ void	push(Stack *Stack, int data)
 	}
 }
 
-int	is_stack_sorted(Stack *Stack)
+int	is_stack_sorted(t_Stack *Stack)
 {
 	t_node	*current;
 
@@ -54,7 +54,7 @@ int	is_stack_sorted(Stack *Stack)
 	return (1);
 }
 
-int	find_max_index(Stack *Stack)
+int	find_max_index(t_Stack *Stack)
 {
 	int		max;
 	t_node	*tmp;
@@ -77,6 +77,7 @@ int	find_max_index(Stack *Stack)
 	}
 	return (index);
 }
+
 char	**split_args(int argc, char *argv[])
 {
 	char	*args;

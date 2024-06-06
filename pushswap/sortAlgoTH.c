@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/05 08:59:41 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:42:30 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	determine_range(int size)
 		return (29);
 }
 
-void	handle_push_conditions(Stack *stack_a, Stack *stack_b, int *sorted_arr,
-		t_push *params)
+void	handle_push_conditions(t_Stack *stack_a, t_Stack *stack_b,
+		int *sorted_arr, t_push *params)
 {
 	if (stack_a->top->data >= sorted_arr[*params->start]
 		&& stack_a->top->data <= sorted_arr[*params->end])
@@ -54,7 +54,7 @@ void	handle_push_conditions(Stack *stack_a, Stack *stack_b, int *sorted_arr,
 	}
 }
 
-void	push_to_stack_b(Stack *stack_a, Stack *stack_b, int *sorted_arr,
+void	push_to_stack_b(t_Stack *stack_a, t_Stack *stack_b, int *sorted_arr,
 		int range)
 {
 	int		start;
@@ -65,14 +65,16 @@ void	push_to_stack_b(Stack *stack_a, Stack *stack_b, int *sorted_arr,
 	start = 0;
 	end = range;
 	rotations = 0;
-	params = {&start, &end, &rotations};
+	params.start = &start;
+	params.end = &end;
+	params.rotations = &rotations;
 	while (stack_size(stack_a) > 0)
 	{
 		handle_push_conditions(stack_a, stack_b, sorted_arr, &params);
 	}
 }
 
-void	sort_stack_b_to_stack_a(Stack *stack_a, Stack *stack_b)
+void	sort_stack_b_to_stack_a(t_Stack *stack_a, t_Stack *stack_b)
 {
 	int	max_val;
 	int	position;
@@ -92,7 +94,7 @@ void	sort_stack_b_to_stack_a(Stack *stack_a, Stack *stack_b)
 	}
 }
 
-void	sort_more(Stack *stack_a, Stack *stack_b)
+void	sort_more(t_Stack *stack_a, t_Stack *stack_b)
 {
 	int	size;
 	int	range;

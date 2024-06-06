@@ -6,13 +6,13 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/05 08:45:03 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:48:44 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	do_sa(Stack *Stack, int flag)
+void	do_sa(t_Stack *Stack, int flag)
 {
 	t_node	*temp;
 	int		temp_data;
@@ -29,13 +29,14 @@ void	do_sa(Stack *Stack, int flag)
 		ft_printf("sb\n");
 }
 
-void	do_ss(Stack *Stack_a, Stack *Stack_b)
+void	do_ss(t_Stack *Stack_a, t_Stack *Stack_b)
 {
 	do_sa(Stack_a, 0);
 	do_sa(Stack_b, 0);
 	ft_printf("ss\n");
 }
-void	do_pa(Stack *Stack_a, Stack *Stack_b)
+
+void	do_pa(t_Stack *Stack_a, t_Stack *Stack_b)
 {
 	t_node	*temp;
 
@@ -48,7 +49,7 @@ void	do_pa(Stack *Stack_a, Stack *Stack_b)
 	ft_printf("pa\n");
 }
 
-void	do_pb(Stack *Stack_a, Stack *Stack_b)
+void	do_pb(t_Stack *Stack_a, t_Stack *Stack_b)
 {
 	t_node	*temp;
 
@@ -61,7 +62,7 @@ void	do_pb(Stack *Stack_a, Stack *Stack_b)
 	ft_printf("pb\n");
 }
 
-void	do_ra(Stack *Stack, int flag)
+void	do_ra(t_Stack *Stack, int flag)
 {
 	t_node	*temp;
 	t_node	*temp2;

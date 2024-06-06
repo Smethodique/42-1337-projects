@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/05 08:45:03 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/05 09:08:00 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ typedef struct s_push
 	int				*rotations;
 }					t_push;
 
-typedef struct
+typedef struct s_Stack
 {
 	t_node			*top;
-}					Stack;
+}					t_Stack;
 
-int					is_stack_sorted(Stack *stack);
+int					is_stack_sorted(t_Stack *stack);
 int					dup_check(char *arg);
 int					isnumarg(char *arg);
 int					parse_args(char *arg);
@@ -40,32 +40,32 @@ char				*join_args_in_str(int argc, char *argv[]);
 char				**split_args(int argc, char *argv[]);
 int					*split_to_int(char **split, int len);
 int					process_args(char *arg, int argc, char *argv[]);
-void				push(Stack *stack, int value);
-void				add_to_stackk(Stack *stack, int argc, char *argv[]);
-void				prinStack(Stack *stack);
+void				push(t_Stack *stack, int value);
+void				add_to_stackk(t_Stack *stack, int argc, char *argv[]);
+void				prinStack(t_Stack *stack);
 void				free_split(char **split);
-void				do_sa(Stack *stack, int flag);
-void				do_ss(Stack *stack_a, Stack *stack_b);
-void				do_pa(Stack *stack_a, Stack *stack_b);
-void				do_pb(Stack *stack_a, Stack *stack_b);
-void				do_ra(Stack *stack, int flag);
-void				do_rra(Stack *stack, int flag);
-void				do_rr(Stack *stack_a, Stack *stack_b);
-void				do_rrr(Stack *stack_a, Stack *stack_b);
-void				sort_two(Stack *stack);
-void				sort_three(Stack *stack);
-void				sort_four(Stack *stack_a, Stack *stack_b);
-void				sort_five(Stack *stack_a, Stack *stack_b);
-int					is_empty(Stack *stack_b);
-int					stack_size(Stack *stack);
-int					find_max_index(Stack *stack);
-int					find_min_index(Stack *stack);
-int					find_position(Stack *stack, int value);
-int					find_max_value(Stack *stack);
-int					*copy_stack_to_array(Stack *stack);
-void				sort_fivet(Stack *stack_a, Stack *stack_b);
+void				do_sa(t_Stack *stack, int flag);
+void				do_ss(t_Stack *stack_a, t_Stack *stack_b);
+void				do_pa(t_Stack *stack_a, t_Stack *stack_b);
+void				do_pb(t_Stack *stack_a, t_Stack *stack_b);
+void				do_ra(t_Stack *stack, int flag);
+void				do_rra(t_Stack *stack, int flag);
+void				do_rr(t_Stack *stack_a, t_Stack *stack_b);
+void				do_rrr(t_Stack *stack_a, t_Stack *stack_b);
+void				sort_two(t_Stack *stack);
+void				sort_three(t_Stack *stack);
+void				sort_four(t_Stack *stack_a, t_Stack *stack_b);
+void				sort_five(t_Stack *stack_a, t_Stack *stack_b);
+int					is_empty(t_Stack *stack_b);
+int					stack_size(t_Stack *stack);
+int					find_max_index(t_Stack *stack);
+int					find_min_index(t_Stack *stack);
+int					find_position(t_Stack *stack, int value);
+int					find_max_value(t_Stack *stack);
+int					*copy_stack_to_array(t_Stack *stack);
+void				sort_fivet(t_Stack *stack_a, t_Stack *stack_b);
 int					*sorting_array(int *arr, int size);
-void				sort_more(Stack *stack_a, Stack *stack_b);
+void				sort_more(t_Stack *stack_a, t_Stack *stack_b);
 int					*copy_arrayy(int *arr, int size);
 void				sort_array(int *arr, int size);
 

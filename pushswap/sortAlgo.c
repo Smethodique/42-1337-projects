@@ -6,13 +6,13 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/05 08:58:12 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:38:19 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	sort_four(Stack *Stack_a, Stack *Stack_b)
+void	sort_four(t_Stack *Stack_a, t_Stack *Stack_b)
 {
 	int	max_index;
 
@@ -36,7 +36,7 @@ void	sort_four(Stack *Stack_a, Stack *Stack_b)
 	do_ra(Stack_a, 1);
 }
 
-void	sort_fivet(Stack *Stack_a, Stack *Stack_b)
+void	sort_fivet(t_Stack *Stack_a, t_Stack *Stack_b)
 {
 	int	min_index;
 
@@ -62,7 +62,7 @@ void	sort_fivet(Stack *Stack_a, Stack *Stack_b)
 		do_sa(Stack_a, 1);
 }
 
-void	sort_five(Stack *Stack_a, Stack *Stack_b)
+void	sort_five(t_Stack *Stack_a, t_Stack *Stack_b)
 {
 	int	min_index;
 
@@ -87,14 +87,14 @@ void	sort_five(Stack *Stack_a, Stack *Stack_b)
 	sort_fivet(Stack_a, Stack_b);
 }
 
-int	is_empty(Stack *Stack)
+int	is_empty(t_Stack *Stack)
 {
 	if (Stack->top == NULL)
 		return (1);
 	return (0);
 }
 
-int	*copy_stack_to_array(Stack *Stack)
+int	*copy_stack_to_array(t_Stack *Stack)
 {
 	int		size;
 	int		*arr;

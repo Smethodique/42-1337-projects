@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/05 09:00:38 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:47:40 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	isnumarg(char *arg)
 	}
 	return (1);
 }
+
 int	parse_args(char *arg)
 {
 	int	i;
@@ -69,7 +70,8 @@ int	process_args(char *arg, int argc, char *argv[])
 	free_split(split);
 	return (1);
 }
-int	stack_size(Stack *stack)
+
+int	stack_size(t_Stack *stack)
 {
 	int		size;
 	t_node	*tmp;
@@ -83,46 +85,28 @@ int	stack_size(Stack *stack)
 	}
 	return (size);
 }
-void	pushT(Stack *stack, int data)
-{
-	t_node	*new_node;
-
-	new_node = (t_node *)malloc(sizeof(t_node));
-	if (new_node == NULL)
-	{
-		fprintf(stderr, "Out of memory\n");
-		exit(1);
-	}
-	new_node->data = data;
-	new_node->next = stack->top;
-	stack->top = new_node;
-}
 
 int	main(int argc, char *argv[])
 {
-	Stack *stack;
-	Stack *stack_b;
+	t_Stack	*stack;
+	t_Stack	*stack_b;
 
 	if (argc < 2)
 		return (1);
-
-	stack = malloc(sizeof(Stack));
-	stack_b = malloc(sizeof(Stack));
+	stack = malloc(sizeof(t_Stack));
+	stack_b = malloc(sizeof(t_Stack));
 	stack->top = NULL;
 	stack_b->top = NULL;
 	process_args(argv[1], argc, argv);
 	add_to_stackk(stack, argc, argv);
-
 	if (is_stack_sorted(stack) == 1)
 	{
 		free(stack);
 		free(stack_b);
 		return (0);
 	}
-
 	sort_more(stack, stack_b);
 	if (is_stack_sorted(stack) == 1)
 		printf("OK\n");
-
 	return (0);
 }
