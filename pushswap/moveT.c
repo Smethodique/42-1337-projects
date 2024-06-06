@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/06 18:37:11 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/06 21:19:05 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,39 @@ void	do_rrr(t_Stack *stack_a, t_Stack *stack_b)
 	do_rra(stack_a, 0);
 	do_rra(stack_b, 0);
 	ft_printf("rrr\n");
+}
+
+void	free_stack(t_Stack *stack)
+{
+	t_node	*current;
+	t_node	*next;
+
+	if (!stack)
+		return ;
+	current = stack->top;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	free(stack);
+}
+
+void	sort_size(t_Stack *stack, t_Stack *stack_b)
+{
+	int	size;
+
+	size = stack_size(stack);
+	if (size == 2)
+		sort_two(stack);
+	if (size == 3)
+		sort_three(stack);
+	else if (size == 4)
+		sort_four(stack, stack_b);
+	else if (size == 5)
+		sort_five(stack, stack_b);
+	free_stack(stack);
+	free_stack(stack_b);
+	exit(1);
 }

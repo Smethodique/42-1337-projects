@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/06 18:41:44 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/06 23:23:24 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	*copy_array(int *arr, int size)
 	int	i;
 
 	copy = malloc(sizeof(int) * size);
-	if (copy == NULL)
+	if (copy == NULL || size < 0)
 	{
 		free(arr);
 		return (NULL);

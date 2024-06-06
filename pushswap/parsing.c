@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/06 18:47:40 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/06 23:16:36 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	stack_size(t_Stack *stack)
 
 	size = 0;
 	tmp = stack->top;
-	while (tmp)
+	while (tmp != NULL)
 	{
 		size++;
 		tmp = tmp->next;
@@ -90,8 +90,9 @@ int	main(int argc, char *argv[])
 {
 	t_Stack	*stack;
 	t_Stack	*stack_b;
+	int		size;
 
-	if (argc < 2)
+	if (argc < 3)
 		return (1);
 	stack = malloc(sizeof(t_Stack));
 	stack_b = malloc(sizeof(t_Stack));
@@ -99,14 +100,17 @@ int	main(int argc, char *argv[])
 	stack_b->top = NULL;
 	process_args(argv[1], argc, argv);
 	add_to_stackk(stack, argc, argv);
+	size = stack_size(stack);
 	if (is_stack_sorted(stack) == 1)
 	{
 		free(stack);
 		free(stack_b);
 		return (0);
 	}
+	if (size >= 2 && size <= 5)
+		sort_size(stack, stack_b);
 	sort_more(stack, stack_b);
-	if (is_stack_sorted(stack) == 1)
-		printf("OK\n");
+	free_stack(stack);
+	free_stack(stack_b);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/06 18:42:30 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/06 23:12:59 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,4 +114,5 @@ void	sort_more(t_Stack *stack_a, t_Stack *stack_b)
 	}
 	push_to_stack_b(stack_a, stack_b, sorted_arr, range);
 	sort_stack_b_to_stack_a(stack_a, stack_b);
+	free(sorted_arr);
 }
