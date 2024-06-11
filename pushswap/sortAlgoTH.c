@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/06 23:12:59 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/10 10:32:21 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,42 @@ int	determine_range(int size)
 void	handle_push_conditions(t_Stack *stack_a, t_Stack *stack_b,
 		int *sorted_arr, t_push *params)
 {
+	int	max_rotations;
+	max_rotations = stack_size(stack_a);
+	if (stack_a->top->data >= sorted_arr[*params->start]
+		&& stack_a->top->data <= sorted_arr[*params->end ])
+	{
+		
+		do_pb(stack_a, stack_b);
+		(*params->start)++;
+		(*params->end)++;
+	}
+	else if (stack_a->top->data < sorted_arr[*params->start])
+	{
+		do_pb(stack_a, stack_b);
+		do_ra(stack_b, 2); 
+		(*params->start)++;
+		(*params->end)++;
+	}
+	else if (stack_a->top->data > sorted_arr[*params->end])
+	{
+		do_ra(stack_a, 1);
+		(*params->rotations)++;
+		if (*params->rotations > max_rotations)
+		{
+			do_pb(stack_a, stack_b);
+			(*params->start)++;
+			(*params->end)++;
+			*params->rotations = 0;
+		}
+	}
+	
+}
+
+void	handle_push_conditions_500(t_Stack *stack_a, t_Stack *stack_b,
+		int *sorted_arr, t_push *params)
+{
+
 	if (stack_a->top->data >= sorted_arr[*params->start]
 		&& stack_a->top->data <= sorted_arr[*params->end])
 	{
@@ -37,21 +73,15 @@ void	handle_push_conditions(t_Stack *stack_a, t_Stack *stack_b,
 	else if (stack_a->top->data < sorted_arr[*params->start])
 	{
 		do_pb(stack_a, stack_b);
-		do_ra(stack_b, 1);
+		do_ra(stack_b, 2); 
 		(*params->start)++;
 		(*params->end)++;
 	}
 	else if (stack_a->top->data > sorted_arr[*params->end])
 	{
 		do_ra(stack_a, 1);
-		(*params->rotations)++;
 	}
-	if (*params->rotations >= stack_size(stack_a))
-	{
-		do_pb(stack_a, stack_b);
-		(*params->start)++;
-		(*params->end)++;
-	}
+	
 }
 
 void	push_to_stack_b(t_Stack *stack_a, t_Stack *stack_b, int *sorted_arr,
@@ -68,9 +98,15 @@ void	push_to_stack_b(t_Stack *stack_a, t_Stack *stack_b, int *sorted_arr,
 	params.start = &start;
 	params.end = &end;
 	params.rotations = &rotations;
+	params.size = stack_size(stack_a);
+	
+	
 	while (stack_size(stack_a) > 0)
 	{
-		handle_push_conditions(stack_a, stack_b, sorted_arr, &params);
+		if(stack_size(stack_a) > 0 && stack_size(stack_a) <= 100)
+			handle_push_conditions(stack_a, stack_b, sorted_arr, &params);
+		else
+			handle_push_conditions_500(stack_a, stack_b, sorted_arr, &params);
 	}
 }
 
@@ -86,16 +122,18 @@ void	sort_stack_b_to_stack_a(t_Stack *stack_a, t_Stack *stack_b)
 		while (stack_b->top->data != max_val)
 		{
 			if (position <= stack_size(stack_b) / 2)
-				do_ra(stack_b, 1);
+				do_ra(stack_b, 2);
 			else
-				do_rra(stack_b, 1);
+				do_rra(stack_b, 2);
 		}
 		do_pa(stack_a, stack_b);
 	}
 }
 
+
 void	sort_more(t_Stack *stack_a, t_Stack *stack_b)
 {
+
 	int	size;
 	int	range;
 	int	*arr;
@@ -116,3 +154,4 @@ void	sort_more(t_Stack *stack_a, t_Stack *stack_b)
 	sort_stack_b_to_stack_a(stack_a, stack_b);
 	free(sorted_arr);
 }
+

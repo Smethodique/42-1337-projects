@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/06 18:40:38 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/11 01:02:49 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char	*join_args_in_str(int argc, char *argv[])
 	}
 	if (parse_args(str) == 0)
 	{
-		printf("Error\n");
+		write(2,"Error\n",6);
 		exit(1);
 	}
 	return (str);

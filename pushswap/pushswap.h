@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/06 19:17:58 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/11 00:16:31 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_push
 	int				*start;
 	int				*end;
 	int				*rotations;
+	int				size;
 }					t_push;
 
 typedef struct s_Stack
@@ -70,4 +71,5 @@ int					*copy_arrayy(int *arr, int size);
 void				sort_array(int *arr, int size);
 void				free_stack(t_Stack *stack);
 void				sort_size(t_Stack *stack, t_Stack *stack_b);
+int					is_space(char *str);
 #endif

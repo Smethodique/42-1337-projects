@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 21:53:53 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/06 18:41:28 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/11 00:18:59 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,22 @@ int	find_min_index(t_Stack *Stack)
 		i++;
 	}
 	return (index);
+}
+
+int	is_space(char *str)
+{
+	if (!str)
+	{
+		write(2,"Error\n",7);
+		return (1);
+	}
+	while (*str && *str == ' ')
+		str++;
+	if (*str != '\0')
+		return (0);
+	else
+	{
+		write(2,"Error\n",7);
+		return (1);
+	}
 }

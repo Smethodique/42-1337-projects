@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 07:04:57 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/06/06 21:18:12 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:15:45 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	is_stack_sorted(t_Stack *Stack)
 	t_node	*current;
 
 	current = Stack->top;
+	if(!Stack)
+	  write(2,"Error\n",7);
 	while (current->next != NULL)
 	{
 		if (current->data > current->next->data)
