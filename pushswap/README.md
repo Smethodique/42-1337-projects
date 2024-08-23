@@ -47,5 +47,11 @@ To compile the project, run:
 
 ```bash
 make
+```## Usage
 
-Usage
+```bash
+./push_swap [numbers]
+```
+for example :
+ ./push_swap 9 5 6 4 7 20 
+
