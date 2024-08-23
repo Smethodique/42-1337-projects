@@ -9,6 +9,7 @@ This repository contains various projects completed as part of the 42 curriculum
 - [Project 4: born to be root](./Born2BeRoot)
 - [Project 5: MiniTalk ](./MiniTalk)
 - [Project 6: so_long ](./so_long)
+- [Project 7: so_long ](./pushswap)
 
 
-project 7 : PushSwap(soon...)
+project   : minishell(soon...)
