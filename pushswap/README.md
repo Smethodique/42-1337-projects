@@ -1,3 +1,4 @@
+
 # Push Swap
 
 ## Overview
@@ -45,13 +46,12 @@ To efficiently sort large sets of numbers, this implementation of `push_swap` us
 
 To compile the project, run:
 
-```bash
+```
 make
-```## Usage
-
-```bash
+```
+# Usag
+```
 ./push_swap [numbers]
 ```
 for example :
  ./push_swap 9 5 6 4 7 20 
-
