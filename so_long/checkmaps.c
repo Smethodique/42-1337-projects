@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:46:32 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/05/08 05:53:03 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/05/10 07:14:03 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ char	*file_to_str(int fd)
 	line = get_next_line(fd);
 	while (line)
 	{
-		printf("ptr: %p\n", ptr);
 		tmp = ft_strjoin2(ptr, line);
 		if (ptr)
 			free(ptr);
@@ -73,7 +72,6 @@ int	rect_check(const char *filename)
 	info.line = get_next_line(info.fd);
 	while (info.line != NULL)
 	{
-		printf("info0: %p\n", info.line);
 		info.length = 0;
 		while (info.line[info.length] != '\0' && info.line[info.length] != '\n')
 			info.length++;
@@ -89,7 +87,6 @@ int	rect_check(const char *filename)
 		info.line = get_next_line(info.fd);
 		info.line_num++;
 	}
-	printf("info: %p\n", info.line);
 	free(info.line);
 	close(info.fd);
 	return (1);
@@ -100,7 +97,6 @@ void	all_func(const char *filename)
 	t_data			data;
 	t_flood_fill	fill;
 	int				i;
-	t_draw_params	params;
 
 	i = 0;
 	fill.arg = filename;
@@ -114,15 +110,14 @@ void	all_func(const char *filename)
 		while (i < fill.rows)
 			free(fill.map[i++]);
 		free(fill.map);
-		system("leaks so_long");
 		ft_printf("Error\nmap is not valid");
 		return ;
 	}
 	setup_and_run(filename, &fill);
+	i = 0;
 	while (i < fill.rows)
 		free(fill.map[i++]);
 	free(fill.map);
-	mlx_destroy_window(params.mlx, params.win);
 }
 
 int	main(int ac, char **av)
@@ -134,18 +129,14 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		fd = open(av[1], O_RDONLY);
-		if (fd == -1)
-		{
-			ft_printf("Error\nfile not found");
-			return (1);
-		}
+		if (fd < 0)
+			return (ft_printf("Error\ninvalid file"));
 		data.convert = file_to_str(fd);
 		val = validate_map(data.convert);
 		if (val == 0)
 		{
 			ft_printf("Error\nmap is not valid");
-			free(data.convert);
-			return (0);
+			return (free(data.convert), 0);
 		}
 		free(data.convert);
 		all_func(av[1]);

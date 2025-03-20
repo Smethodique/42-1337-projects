@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 00:58:33 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/05/08 05:42:33 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/05/10 05:46:51 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,54 +49,48 @@ void	*load_image(void *mlx_ptr, char *path, int *width, int *height)
 
 int	destroy(int keycode, t_fp *params)
 {
-    if (keycode == 53)
-    {
-        // Free the images
-        mlx_destroy_image(params->dp->mlx, params->dp->d->black);
-        mlx_destroy_image(params->dp->mlx, params->dp->d->wall);
-        mlx_destroy_image(params->dp->mlx, params->dp->d->coins);
-        mlx_destroy_image(params->dp->mlx, params->dp->d->door);
-        mlx_destroy_image(params->dp->mlx, params->dp->d->img_player);
+	int	i;
 
-        // Destroy the window
-        mlx_destroy_window(params->dp->mlx, params->dp->win);
-
-        // Check for leaks
-		int i = 0;
+	if (keycode == 65307)
+	{
+		mlx_destroy_image(params->dp->mlx, params->dp->d->black);
+		mlx_destroy_image(params->dp->mlx, params->dp->d->wall);
+		mlx_destroy_image(params->dp->mlx, params->dp->d->coins);
+		mlx_destroy_image(params->dp->mlx, params->dp->d->door);
+		mlx_destroy_image(params->dp->mlx, params->dp->d->img_player);
+		mlx_destroy_window(params->dp->mlx, params->dp->win);
+		i = 0;
 		while (i < params->f->rows)
 		{
-			printf("%p\n", params->f->map[i]);
 			free(params->f->map[i]);
 			i++;
 		}
 		free(params->f->map);
-		
-        system("leaks so_long");
-
-        exit(0);
-    }
-    return (1);
+		exit(0);
+	}
+	return (1);
 }
 
 int	move_player(int keycode, t_fp *params)
 {
 	static int	total_moves = 0;
 
-	if ((keycode == 13 && params->f->map[params->f->y - 1][params->f->x] != '1')
-		|| (keycode == 0 && params->f->x > 0
+	if ((keycode == 119 && params->f->y > 0
+			&& params->f->map[params->f->y - 1][params->f->x] != '1')
+		|| (keycode == 97 && params->f->x > 0
 			&& params->f->map[params->f->y][params->f->x - 1] != '1')
-		|| (keycode == 1 && params->f->y < params->f->rows - 1
+		|| (keycode == 115 && params->f->y < params->f->rows - 1
 			&& params->f->map[params->f->y + 1][params->f->x] != '1')
-		|| (keycode == 2 && params->f->x < params->f->cols - 1
+		|| (keycode == 100 && params->f->x < params->f->cols - 1
 			&& params->f->map[params->f->y][params->f->x + 1] != '1'))
 	{
-		if (keycode == 13)
+		if (keycode == 119)
 			move_player_up(params->f, params->dp, &total_moves);
-		else if (keycode == 0)
+		else if (keycode == 97)
 			move_player_left(params->f, params->dp, &total_moves);
-		else if (keycode == 1)
+		else if (keycode == 115)
 			move_player_down(params->f, params->dp, &total_moves);
-		else if (keycode == 2)
+		else if (keycode == 100)
 			move_player_right(params->f, params->dp, &total_moves);
 	}
 	if_eat(params->f, params);

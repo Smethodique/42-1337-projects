@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 23:16:36 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/05/02 00:32:14 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/05/09 09:02:03 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	last_line(const char *filename)
 		last_one = line;
 		line = get_next_line(fd);
 	}
+	if (line)
+		free(line);
 	if (last_one == NULL)
 		return (0);
 	all_ones = is_all_ones(last_one);
@@ -73,7 +75,6 @@ int	lf_char(const char *filename)
 	if (fd == -1)
 		return (0);
 	line = get_next_line(fd);
-	line = get_next_line(fd);
 	while (line != NULL)
 	{
 		if (line[0] != '1' || line[ft_strlen(line) - 2] != '1')
@@ -85,6 +86,8 @@ int	lf_char(const char *filename)
 		free(line);
 		line = get_next_line(fd);
 	}
+	if (line)
+		free(line);
 	close(fd);
 	return (1);
 }

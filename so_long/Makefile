@@ -4,7 +4,7 @@ OBJS = $(SRCS:.c=.o)
 LIBFT = 1337Libft/libft.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror 
-LDFLAGS = -L 1337Libft -lft -lmlx -framework OpenGL -framework AppKit
+LDFLAGS = -L1337Libft -lft -lmlx -lX11 -lXext -lm 
 
 all: $(NAME)
 

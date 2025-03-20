@@ -6,7 +6,7 @@
 /*   By: stakhtou <stakhtou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 03:58:06 by stakhtou          #+#    #+#             */
-/*   Updated: 2024/05/02 17:30:42 by stakhtou         ###   ########.fr       */
+/*   Updated: 2024/05/11 00:39:29 by stakhtou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,20 +85,21 @@ int	check_go(t_flood_fill *fill)
 	find_exit_coordinates(fill);
 	e_row = fill->i;
 	e_col = fill->j;
-	if (e_row >= 0 && e_row < fill->rows && e_col >= 0 && e_col < fill->cols)
+	if (e_row >= 0 && e_row < fill->rows && e_col >= 0 && e_col < fill->cols
+		&& fill->map[e_row][e_col] == 'E')
 	{
-		if ((e_row > 0 && fill->map[e_row - 1][e_col] != '-')
-			&& (e_row < fill->rows - 1 && fill->map[e_row + 1][e_col] != '-')
-			&& (e_col > 0 && fill->map[e_row][e_col - 1] != '-')
-			&& (e_col < fill->cols - 1 && fill->map[e_row][e_col + 1] != '-'))
-			return (0);
+		if ((e_row > 0 && fill->map[e_row - 1][e_col] == '-')
+			|| (e_row < fill->rows - 1 && fill->map[e_row + 1][e_col] == '-')
+			|| (e_col > 0 && fill->map[e_row][e_col - 1] == '-')
+			|| (e_col < fill->cols - 1 && fill->map[e_row][e_col + 1] == '-'))
+			return (1);
 	}
-	return (1);
+	return (0);
 }
 
 int	check_size(t_flood_fill *fill)
 {
-	if (fill->rows > 409 || fill->cols > 409)
+	if (fill->rows > 300 || fill->cols > 300)
 	{
 		return (0);
 	}
