@@ -12,4 +12,7 @@ This repository contains various projects completed as part of the 42 curriculum
 - [Project 7: Pushswap](./pushswap)
 - [Project 8: Minishell](./MiniShell)
 - [Project 9: Philosopher](./philosopher)
+- [Project 10: Mini-rt](./Mini-rt)
+
+  CPP_pool (soon  ...)
 
