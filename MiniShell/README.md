@@ -90,5 +90,5 @@ The project includes a garbage collector to manage dynamic memory allocation, pr
 
 ## Contributors
 
-- [iabboudi](https://github.com/iabboudi)
+- [iabboudi](https://github.com/xenom94)
 - [Smethodique](https://github.com/Smethodique)
