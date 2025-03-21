@@ -10,5 +10,5 @@ This repository contains various projects completed as part of the 42 curriculum
 - [Project 5: MiniTalk ](./MiniTalk)
 - [Project 6: so_long ](./so_long)
 - [Project 7: Pushswap](./pushswap)
-- [Project 8: Pushswap](./MiniShell)
+- [Project 8: Minishell](./MiniShell)
 
