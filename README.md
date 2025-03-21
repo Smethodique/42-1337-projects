@@ -15,5 +15,5 @@ This repository contains various projects completed as part of the 42 curriculum
 - [Project 10: Mini-rt](./Mini-rt)
 - [Project 11: net-practice](./net-practice)
 
-  CPP_pool (soon  ...) [](./CPP_PART_ONE)
+  CPP_pool (soon  ...) [cpp ](./CPP_PART_ONE)
 
