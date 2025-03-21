@@ -19,8 +19,8 @@ MiniRT is a minimalist ray tracing engine developed in C, implementing fundament
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/miniRT.git
-cd miniRT
+git clone https://github.com/Smethodique/42-1337-projects.git
+cd Mini-rt
 
 # Compile the program
 make
