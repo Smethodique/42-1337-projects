@@ -13,6 +13,7 @@ This repository contains various projects completed as part of the 42 curriculum
 - [Project 8: Minishell](./MiniShell)
 - [Project 9: Philosopher](./philosopher)
 - [Project 10: Mini-rt](./Mini-rt)
+- [Project 11: net-practice](./net-practice)
 
   CPP_pool (soon  ...)
 
