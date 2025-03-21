@@ -101,7 +101,6 @@ For subnet 192.168.1.0/24:
 - [CIDR Chart](https://www.aelius.com/njh/subnet_sheet.html)
 - [Practical Networking Fundamentals](https://www.pracnet.net/)
 
- print
 ```
 
 ## Project Evaluation Criteria
