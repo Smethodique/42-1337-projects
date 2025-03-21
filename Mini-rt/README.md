@@ -82,4 +82,4 @@ The project utilizes vector mathematics for:
 
 ## Contributors
 - [Smethodique (me)](https://github.com/Smethodique)
-- [waiseman](https://github.com/WeismannS)
+- [Weismann](https://github.com/WeismannS)
