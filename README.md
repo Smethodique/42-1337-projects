@@ -12,5 +12,3 @@ This repository contains various projects completed as part of the 42 curriculum
 - [Project 7: Pushswap](./pushswap)
 - [Project 8: Pushswap](./MiniShell)
 
-
-project 8 : minishell(soon...)
