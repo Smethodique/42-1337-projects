@@ -78,7 +78,9 @@ The project utilizes vector mathematics for:
 - `src/`: Source code files
 - `scenes/`: Example scene files
 
-
+##  Show case
+<img width="1594" height="1000" alt="Screenshot from 2025-07-12 22-32-33" src="https://github.com/user-attachments/assets/32ea8681-e40f-4922-b6ff-bba38ec0b1e9" />
+<img width="1425" height="1000" alt="Screenshot from 2025-07-12 22-38-56" src="https://github.com/user-attachments/assets/50cddc85-d267-46ac-b2ef-0934ea1bc300" />
 
 ## Contributors
 - [Smethodique (me)](https://github.com/Smethodique)
