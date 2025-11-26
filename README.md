@@ -17,5 +17,6 @@ This repository contains various projects completed as part of the 42 curriculum
 - [Project 12: CPP PART 1](./CPP_PART_ONE)
 -  [Project 13: CPP PART 2](./CPP_PART_TWO)
 -  [Project 14: Webserve](./Webserv)
+-     Last project: ft_transcendence web app — (coming soon)
 
 
