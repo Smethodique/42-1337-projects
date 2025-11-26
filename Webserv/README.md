@@ -109,3 +109,10 @@ Content-Type: text/html
 ## Logging
 The server prints helpful logs to stdout, e.g. configuration summary, accepted connections, CGI lifecycle, and timeouts.
 
+## Contributors
+- [Smethodique (me)](https://github.com/Smethodique)
+- [Anass Amellah](https://github.com/anasamellahe)
+- [Mehdi elbaraka](https://github.com/barakamehdi)
+
+
+
