@@ -14,6 +14,6 @@ This repository contains various projects completed as part of the 42 curriculum
 - [Project 9: Philosopher](./philosopher)
 - [Project 10: Mini-rt](./Mini-rt)
 - [Project 11: net-practice](./net-practice)
-- [Project 12: CPP](./CPP_PART_ONE) (./CPP_PART_TWO)
+- [Project 12: CPP PART 1](./CPP_PART_ONE)
 
 
