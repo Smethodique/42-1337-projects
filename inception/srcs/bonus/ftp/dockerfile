@@ -1,0 +1,18 @@
+FROM alpine:3.22.1
+
+RUN apk add --no-cache vsftpd openssl bash
+
+RUN mkdir -p /var/www/html /var/log/vsftpd /etc/vsftpd
+
+RUN adduser -D -h /var/www/html -s /bin/bash ftpuser && \
+    echo "ftpuser:ftppassword" | chpasswd
+
+COPY config/vsftpd.conf /etc/vsftpd/vsftpd.conf
+COPY config/start.sh /start.sh
+
+RUN chmod +x /start.sh && chown -R ftpuser:ftpuser /var/www/html
+
+EXPOSE 21 21000-21010
+
+CMD ["/start.sh"]
+
